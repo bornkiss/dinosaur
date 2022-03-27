@@ -43,10 +43,12 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
+        hideOnScroll: true,
         title: 'Bornkiss',
         logo: {
           alt: 'My Site Logo',
           src: 'img/logo.svg',
+          srcDark: 'img/docusaurus_keytar.svg'
         },
         items: [
           {
@@ -79,7 +81,7 @@ const config = {
             title: 'Frameworks',
             items: [
               {
-                label: 'Vue.js',
+                label: 'Vue',
                 href: 'https://vuejs.org/',
               },
               {
@@ -136,6 +138,62 @@ const config = {
         //... other Algolia params
       },
     }),
+
+  plugins: [
+    [
+      '@docusaurus/plugin-pwa',
+      {
+        pwaHead: [
+          {
+            tagName: 'link',
+            rel: 'icon',
+            href: '/img/docusaurus.png',
+          },
+          {
+            tagName: 'link',
+            rel: 'manifest',
+            href: '/manifest.json',
+          },
+          {
+            tagName: 'meta',
+            name: 'theme-color',
+            content: 'rgb(37, 194, 160)',
+          },
+          {
+            tagName: 'meta',
+            name: 'apple-mobile-web-app-capable',
+            content: 'yes',
+          },
+          {
+            tagName: 'meta',
+            name: 'apple-mobile-web-app-status-bar-style',
+            content: '#000',
+          },
+          {
+            tagName: 'link',
+            rel: 'apple-touch-icon',
+            href: '/img/docusaurus.png',
+          },
+          {
+            tagName: 'link',
+            rel: 'mask-icon',
+            href: '/img/docusaurus.svg',
+            color: 'rgb(37, 194, 160)',
+          },
+          {
+            tagName: 'meta',
+            name: 'msapplication-TileImage',
+            content: '/img/docusaurus.png',
+          },
+          {
+            tagName: 'meta',
+            name: 'msapplication-TileColor',
+            content: '#000',
+          },
+        ],
+      },
+    ],
+  ],
 };
 
 module.exports = config;

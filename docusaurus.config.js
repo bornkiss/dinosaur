@@ -56,11 +56,11 @@ const config = {
             label: '指南',
           },
           {to: '/blog', label: '博客', position: 'right'},
-          {
-            href: 'https://github.com/bornkiss/dinosaur',
-            label: 'GitHub',
-            position: 'right',
-          },
+          // {
+          //   href: 'https://github.com/bornkiss/dinosaur',
+          //   label: 'GitHub',
+          //   position: 'right',
+          // },
         ],
       },
       footer: {

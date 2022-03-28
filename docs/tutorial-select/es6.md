@@ -1,3 +1,6 @@
+---
+sidebar_position: 6
+---
 # es6语法说明
 
 :::warning

@@ -2,24 +2,38 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://your-docusaurus-test-site.com/blog</id>
     <title>Bornkiss Blog</title>
-    <updated>2022-03-27T00:00:00.000Z</updated>
+    <updated>2022-03-29T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://your-docusaurus-test-site.com/blog"/>
     <subtitle>Bornkiss Blog</subtitle>
     <icon>https://your-docusaurus-test-site.com/img/favicon.ico</icon>
     <entry>
-        <title type="html"><![CDATA[Welcome]]></title>
-        <id>welcome</id>
-        <link href="https://your-docusaurus-test-site.com/blog/welcome"/>
-        <updated>2022-03-27T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Docusaurus blogging features are powered by the blog plugin.]]></summary>
-        <content type="html"><![CDATA[<p><a href="https://docusaurus.io/docs/blog" target="_blank" rel="noopener noreferrer">Docusaurus blogging features</a> are powered by the <a href="https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog" target="_blank" rel="noopener noreferrer">blog plugin</a>.</p><p>Simply add Markdown files (or folders) to the <code>blog</code> directory.</p><p>Regular blog authors can be added to <code>authors.yml</code>.</p><p>The blog post date can be extracted from filenames, such as:</p><ul><li><code>2019-05-30-welcome.md</code></li><li><code>2019-05-30-welcome/index.md</code></li></ul><p>A blog post folder can be convenient to co-locate blog post images:</p><p><img loading="lazy" alt="Docusaurus Plushie" src="/assets/images/docusaurus-plushie-banner-a60f7593abca1e3eef26a9afa244e4fb.jpeg" width="1500" height="500" class="img_E7b_"></p><p>The blog supports tags as well!</p><p><strong>And if you don't want a blog</strong>: just delete this directory, and use <code>blog: false</code> in your Docusaurus config.</p>]]></content>
+        <title type="html"><![CDATA[Goals]]></title>
+        <id>goals</id>
+        <link href="https://your-docusaurus-test-site.com/blog/goals"/>
+        <updated>2022-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[There are some goals to accomplish this year.]]></summary>
+        <content type="html"><![CDATA[<p><strong>There are some goals to accomplish this year.</strong></p><ol class="contains-task-list"><li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Read a book every month. (since next month)</li><li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Go to bed before 23:00. (since today)</li><li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Run at least 1km every weekend. (since this week)</li><li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Have a good temper.</li><li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Act after thinking</li><li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Save 50,000 RMB.</li></ol><div class="admonition admonition-info alert alert--info"><div class="admonition-heading"><h5><span class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</h5></div><div class="admonition-content"><p>In a word, health is the most important!</p></div></div>]]></content>
         <author>
             <name>Bornkiss</name>
             <uri>https://github.com/bornkiss</uri>
         </author>
-        <category label="facebook" term="facebook"/>
+        <category label="bornkiss" term="bornkiss"/>
+        <category label="goals" term="goals"/>
+        <category label="health" term="health"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Welcome]]></title>
+        <id>welcome</id>
+        <link href="https://your-docusaurus-test-site.com/blog/welcome"/>
+        <updated>2022-03-27T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Welcome!]]></summary>
+        <content type="html"><![CDATA[<p>Welcome!</p><p>Here is Bornkiss's zone.</p><p>I will not share anything about front end in the blog, but record life.</p><p>I am a fun guy.</p>]]></content>
+        <author>
+            <name>Bornkiss</name>
+            <uri>https://github.com/bornkiss</uri>
+        </author>
         <category label="hello" term="hello"/>
-        <category label="docusaurus" term="docusaurus"/>
+        <category label="life" term="life"/>
     </entry>
 </feed>

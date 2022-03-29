@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocusaurus=self.webpackChunkdocusaurus||[]).push([[7818],{8277:function(s){s.exports=JSON.parse('{"allTagsPath":"/blog/tags","name":"bornkiss","count":1,"permalink":"/blog/tags/bornkiss"}')}}]);

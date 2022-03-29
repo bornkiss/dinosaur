@@ -55,7 +55,7 @@ const config = {
             type: 'doc',
             docId: 'intro',
             position: 'right',
-            label: '指南',
+            label: '文档',
           },
           {to: '/blog', label: '博客', position: 'right'},
           // {

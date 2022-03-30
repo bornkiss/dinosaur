@@ -58,11 +58,13 @@ const config = {
             label: '文档',
           },
           {to: '/blog', label: '博客', position: 'right'},
-          // {
-          //   href: 'https://github.com/bornkiss/dinosaur',
-          //   label: 'GitHub',
-          //   position: 'right',
-          // },
+          {
+            href: 'https://github.com/bornkiss/dinosaur',
+            // label: 'GitHub',
+            position: 'right',
+            className: 'header-github-link',
+            'aria-label': 'GitHub repository',
+          },
         ],
       },
       footer: {
@@ -128,9 +130,17 @@ const config = {
         disableSwitch: false,
         respectPrefersColorScheme: false,
       },
+      liveCodeBlock: {
+        /**
+         * The position of the live playground, above or under the editor
+         * Possible values: "top" | "bottom"
+         */
+        playgroundPosition: 'top',
+      },
     }),
 
   plugins: [
+    '@docusaurus/theme-live-codeblock',
     [
       '@docusaurus/plugin-pwa',
       {

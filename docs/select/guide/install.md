@@ -37,7 +37,7 @@ sidebar_position: 1
 
 有兴趣的小伙伴可以从git上下载源码进行二次开发
 
-```sh
+```bash
 $ git clone https://gitee.com/maplemei/xm-select.git
 $ cd xm-select
 $ npm install && npm run dev

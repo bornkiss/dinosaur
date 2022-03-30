@@ -13,7 +13,8 @@ sidebar_position: 5
 
 ## 1.在哪里下载
 
-[Gitee码云下载](https://gitee.com/maplemei/xm-select/releases), 使用时引入`xm-select.js`即可, 已经内置了css, 具体请看[入门指南](../tutorial-select/guide/install.md)
+[Gitee码云下载](https://gitee.com/maplemei/xm-select/releases), 使用时引入`xm-select.js`即可, 已经内置了css, 具体请看[入门指南](../
+select/guide/install.md)
 
 
 ## 2.为什么多选不显示

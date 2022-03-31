@@ -4,32 +4,32 @@ import styles from './styles.module.css';
 
 const FeatureList = [
   {
-    title: 'Easy to Use',
+    title: 'Enjoy Life',
     Svg: require('@site/static/img/index/enjoy.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        There are so many interesting things in the world. Relatives and friends
+        are aroud me. How lucky I live in the beautiful world!
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: 'Good at Communicating',
     Svg: require('/img/index/talk.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        It is necessary that communicate with others, and everything is going well.
+        If not, every relationship maybe awful!
       </>
     ),
   },
   {
-    title: 'Powered by React',
+    title: 'Love Code',
     Svg: require('/img/index/code.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        IT is really a good tool that provides people much help and brings convenience
+        to our life. So, <code>Code</code> is cute!
       </>
     ),
   },

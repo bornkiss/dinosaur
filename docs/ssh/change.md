@@ -1,12 +1,12 @@
 # 账号切换
 
-**分别介绍在macOS和Windows的实现方法**
+**分别介绍在MacOS和Windows的实现方法**
 
 >假设有两个Github账号，已经添加好ssh key公钥至对应账号  
 >:health_worker: 个人： `mine.pub`  
 >:office: 公司： `company.pub`  
 
-## macOS
+## MacOS
 ### 个人账号
 创建sh命令文件 `github_mine.sh`
 ```bash
@@ -27,18 +27,15 @@ cp -Rf ~/.ssh/company.pub ~/.ssh/id_ed25519.pub
 
 ### 切换操作
 根据需要使用的账号，在 `~` 或 `.ssh` 目录下，执行上述创建好的命令
-::::code-group
-:::code-group-item 个人
+
+#### 个人
 ```bash
 sh github_mine.sh
 ```
-:::
-:::code-group-item 公司
+#### 公司
 ```bash
 sh github_company.sh
 ```
-:::
-::::
 
 查看 `id_ed25519.pub` 公钥是否是对应刚执行的sh命令所属公钥
 ```bash
@@ -85,18 +82,16 @@ copy C:\Users\Administrator\.ssh\company.pub C:\Users\Administrator\.ssh\id_ed25
 `Win + R`，输入`cmd`打开命令提示符
 :::
 根据需要使用的账号，执行上述创建好的脚本
-::::code-group
-:::code-group-item 个人
+
+#### 个人
 ```bash
 github_mine
 ```
-:::
-:::code-group-item 公司
+
+#### 公司
 ```bash
 github_company
 ```
-:::
-::::
 
 查看 `id_ed25519.pub` 公钥是否是对应刚执行的sh命令所属公钥
 ```bash

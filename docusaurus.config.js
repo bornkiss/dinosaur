@@ -55,9 +55,9 @@ const config = {
             type: 'doc',
             docId: 'intro',
             position: 'right',
-            label: '文档',
+            label: 'Docs',
           },
-          {to: '/blog', label: '博客', position: 'right'},
+          {to: '/blog', label: 'Blog', position: 'right'},
           {
             href: 'https://github.com/bornkiss/dinosaur',
             // label: 'GitHub',

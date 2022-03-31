@@ -2,11 +2,27 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://your-docusaurus-test-site.com/blog</id>
     <title>Bornkiss Blog</title>
-    <updated>2022-03-29T00:00:00.000Z</updated>
+    <updated>2022-03-31T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://your-docusaurus-test-site.com/blog"/>
     <subtitle>Bornkiss Blog</subtitle>
     <icon>https://your-docusaurus-test-site.com/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[Azeroth]]></title>
+        <id>azeroth</id>
+        <link href="https://your-docusaurus-test-site.com/blog/azeroth"/>
+        <updated>2022-03-31T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[I was once a horde warrior galloping across Azeroth.]]></summary>
+        <content type="html"><![CDATA[<p><strong>I was once a horde warrior galloping across Azeroth.</strong></p><p>What I prefer is collecting legend weapons and rare mount.</p><p><img loading="lazy" alt="Orc" src="/assets/images/Orc-0a622fcd6f5f40d5959db1151b0f69f3.jpg" width="379" height="568" class="img_E7b_"> <img loading="lazy" alt="Azzinoth" src="/assets/images/Azzinoth-1251eb06e47edb8f4832c0aafd38c8d3.jpg" width="4032" height="3024" class="img_E7b_"></p>]]></content>
+        <author>
+            <name>Bornkiss</name>
+            <uri>https://github.com/bornkiss</uri>
+        </author>
+        <category label="wow" term="wow"/>
+        <category label="world of warcraft" term="world of warcraft"/>
+        <category label="horde" term="horde"/>
+        <category label="Azeroth" term="Azeroth"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Goals]]></title>
         <id>goals</id>

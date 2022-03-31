@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocusaurus=self.webpackChunkdocusaurus||[]).push([[3281],{3178:function(a){a.exports=JSON.parse('{"allTagsPath":"/blog/tags","name":"world of warcraft","count":1,"permalink":"/blog/tags/world-of-warcraft"}')}}]);

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://your-docusaurus-test-site.com/blog</id>
+    <id>https://docs.bornkiss.com/blog</id>
     <title>Bornkiss Blog</title>
     <updated>2022-03-31T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://your-docusaurus-test-site.com/blog"/>
+    <link rel="alternate" href="https://docs.bornkiss.com/blog"/>
     <subtitle>Bornkiss Blog</subtitle>
-    <icon>https://your-docusaurus-test-site.com/img/favicon.ico</icon>
+    <icon>https://docs.bornkiss.com/img/favicon.ico</icon>
     <entry>
         <title type="html"><![CDATA[Azeroth]]></title>
         <id>azeroth</id>
-        <link href="https://your-docusaurus-test-site.com/blog/azeroth"/>
+        <link href="https://docs.bornkiss.com/blog/azeroth"/>
         <updated>2022-03-31T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[I was once a horde warrior galloping across Azeroth.]]></summary>
         <content type="html"><![CDATA[<p><strong>I was once a horde warrior galloping across Azeroth.</strong></p><p>What I prefer is collecting legend weapons and rare mount.</p><p><img loading="lazy" alt="Orc" src="/assets/images/Orc-0a622fcd6f5f40d5959db1151b0f69f3.jpg" width="379" height="568" class="img_E7b_"> <img loading="lazy" alt="Azzinoth" src="/assets/images/Azzinoth-1251eb06e47edb8f4832c0aafd38c8d3.jpg" width="4032" height="3024" class="img_E7b_"></p>]]></content>
@@ -26,7 +26,7 @@
     <entry>
         <title type="html"><![CDATA[Goals]]></title>
         <id>goals</id>
-        <link href="https://your-docusaurus-test-site.com/blog/goals"/>
+        <link href="https://docs.bornkiss.com/blog/goals"/>
         <updated>2022-03-29T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[There are some goals to accomplish this year.]]></summary>
         <content type="html"><![CDATA[<p><strong>There are some goals to accomplish this year.</strong></p><ol class="contains-task-list"><li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Read a book every month. (since next month)</li><li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Go to bed before 23:00. (since today)</li><li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Run at least 1km every weekend. (since this week)</li><li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Have a good temper.</li><li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Act after thinking</li><li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Save 50,000 RMB.</li></ol><div class="admonition admonition-info alert alert--info"><div class="admonition-heading"><h5><span class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</h5></div><div class="admonition-content"><p>In a word, health is the most important!</p></div></div>]]></content>
@@ -41,7 +41,7 @@
     <entry>
         <title type="html"><![CDATA[Welcome]]></title>
         <id>welcome</id>
-        <link href="https://your-docusaurus-test-site.com/blog/welcome"/>
+        <link href="https://docs.bornkiss.com/blog/welcome"/>
         <updated>2022-03-27T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Welcome!]]></summary>
         <content type="html"><![CDATA[<p>Welcome!</p><p>Here is Bornkiss's zone.</p><p>I will not share anything about front end in the blog, but record life.</p><p>I am a fun guy.</p>]]></content>

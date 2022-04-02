@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'Bornkiss',
   tagline: 'Kissing JavaScript',
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://docs.bornkiss.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -34,7 +34,7 @@ const config = {
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
-        },
+        }
       }),
     ],
   ],
@@ -188,7 +188,7 @@ const config = {
           },
         ],
       },
-    ],
+    ]
   ],
 };
 

@@ -1,34 +1,4 @@
-# Laravel 的 API 认证系统 Passport
-
-- [介绍](#introduction)
-- [安装](#installation)
-    - [前端快速上手](#frontend-quickstart)
-    - [部署 Passport](#deploying-passport)
-- [配置](#configuration)
-    - [令牌的使用期限](#token-lifetimes)
-- [发放访问令牌](#issuing-access-tokens)
-    - [管理客户端](#managing-clients)
-    - [请求令牌](#requesting-tokens)
-    - [刷新令牌](#refreshing-tokens)
-- [密码授权令牌](#password-grant-tokens)
-    - [创建密码授权客户端](#creating-a-password-grant-client)
-    - [请求密码授权令牌](#requesting-password-grant-tokens)
-    - [请求所有作用域](#requesting-all-scopes)
-- [简化授权令牌](#implicit-grant-tokens)
-- [客户端授权令牌](#client-credentials-grant-tokens)
-- [个人访问令牌](#personal-access-tokens)
-    - [创建个人访问令牌的客户端](#creating-a-personal-access-client)
-    - [管理个人访问令牌](#managing-personal-access-tokens)
-- [路由保护](#protecting-routes)
-    - [通过中间件](#via-middleware)
-    - [传递访问令牌](#passing-the-access-token)
-- [令牌作用域](#token-scopes)
-    - [定义作用域](#defining-scopes)
-    - [给令牌分配作用域](#assigning-scopes-to-tokens)
-    - [检查作用域](#checking-scopes)
-- [使用 JavaScript 接入 API](#consuming-your-api-with-javascript)
-- [事件](#events)
-- [测试](#testing)
+#  API 认证系统 Passport
 
 
 ## 介绍
@@ -546,7 +516,7 @@ Passport 中也有用来管理个人访问令牌的 JSON API，你可以将其�
 
 ### 通过中间件
 
-Passport 包含一个 [验证保护机制](/docs/{{version}}/authentication#adding-custom-guards) 可以验证请求中传入的访问令牌。配置 `api` 的看守器使用 `passport` 驱动程序后，只需要在需要有效访问令牌的任何路由上指定 `auth:api` 中间件：
+Passport 包含一个 [验证保护机制](/docs/laravel/authentication#adding-custom-guards) 可以验证请求中传入的访问令牌。配置 `api` 的看守器使用 `passport` 驱动程序后，只需要在需要有效访问令牌的任何路由上指定 `auth:api` 中间件：
 
     Route::get('/user', function () {
         //

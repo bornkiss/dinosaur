@@ -1,24 +1,4 @@
-# Laravel 的 邮件发送功能
-
-- [简介](#introduction)
-    - [驱动前提](#driver-prerequisites)
-- [生成 Mailable](#generating-mailables)
-- [编写 Mailable](#writing-mailables)
-    - [配置发送者](#configuring-the-sender)
-    - [配置视图](#configuring-the-view)
-    - [视图数据](#view-data)
-    - [附件](#attachments)
-    - [内部附件](#inline-attachments)
-    - [自定义 SwiftMailer 消息](#customizing-the-swiftmailer-message)
-- [Markdown 格式的邮件](#markdown-mailables)
-    - [生成 Markdown 格式的邮件](#generating-markdown-mailables)
-    - [编写 Markdown 格式的邮件](#writing-markdown-messages)
-    - [自定义组件](#customizing-the-components)
-- [在浏览器中预览邮件](#previewing-mailables-in-the-browser)
-- [发送邮件](#sending-mail)
-    - [队列邮件](#queueing-mail)
-- [邮件与本地开发](#mail-and-local-development)
-- [事件](#events)
+#  邮件发送功能
 
 
 ## 简介
@@ -102,7 +82,7 @@ Laravel 基于 [SwiftMailer](http://swiftmailer.org) 函数库提供了一套干
 
 ### 配置视图
 
-在 `build`方法内，你可以使用 `view` 方法指定邮件的模板，以渲染邮件的内容。因为所有邮件都会使用 [Blade 模板](/docs/{{version}}/blade) 渲染内容，你能很容易的使用 Blade 模板引擎构建邮件的 HTML：
+在 `build`方法内，你可以使用 `view` 方法指定邮件的模板，以渲染邮件的内容。因为所有邮件都会使用 [Blade 模板](/docs/laravel/blade) 渲染内容，你能很容易的使用 Blade 模板引擎构建邮件的 HTML：
 
     /**
      * Build the message.
@@ -429,7 +409,7 @@ Markdown Mailable 使用 Blade 组件和 Markdown 语法的组合，允许你轻
 
 ## 发送邮件
 
-要发送邮件，使用 `Mail` [facade](/docs/{{version}}/facades) 的 `to` 方法。 `to` 方法接受一个邮件地址，一个 user 实现或一个 users 集合。如果传递一个对象或集合，mailer 将自动使用 `email` 和 `name` 属性来设置邮件收件人，所以确保你的对象里有这些属性。一旦指定收件人，你可以传递一个实现到 Mailable 类的 `send` 方法：
+要发送邮件，使用 `Mail` [facade](/docs/laravel/facades) 的 `to` 方法。 `to` 方法接受一个邮件地址，一个 user 实现或一个 users 集合。如果传递一个对象或集合，mailer 将自动使用 `email` 和 `name` 属性来设置邮件收件人，所以确保你的对象里有这些属性。一旦指定收件人，你可以传递一个实现到 Mailable 类的 `send` 方法：
 
     <?php
 
@@ -472,14 +452,14 @@ Markdown Mailable 使用 Blade 组件和 Markdown 语法的组合，允许你轻
 
 #### 将邮件消息加入队列
 
-由于发送消息会大幅延迟应用响应时间，许多开发者选择将邮件消息加入队列在后台进行发送。Laravel 使用内置的 [统一的队列 API](/docs/{{version}}/queues) 来轻松完成此工作。将邮件消息加入队列，使用 `Mail` facade 的 `queue` 方法：
+由于发送消息会大幅延迟应用响应时间，许多开发者选择将邮件消息加入队列在后台进行发送。Laravel 使用内置的 [统一的队列 API](/docs/laravel/queues) 来轻松完成此工作。将邮件消息加入队列，使用 `Mail` facade 的 `queue` 方法：
 
     Mail::to($request->user())
         ->cc($moreUsers)
         ->bcc($evenMoreUsers)
         ->queue(new OrderShipped($order));
 
-这个方法会自动将工作加入队列，以便后台发送邮件。当然，在使用这个功能前，你需要 [设置你的队列](/docs/{{version}}/queues) 。
+这个方法会自动将工作加入队列，以便后台发送邮件。当然，在使用这个功能前，你需要 [设置你的队列](/docs/laravel/queues) 。
 
 #### 延迟邮件消息队列
 
@@ -523,7 +503,7 @@ Markdown Mailable 使用 Blade 组件和 Markdown 语法的组合，允许你轻
 
 #### 日志驱动
 
-代替真实发送，`log` 邮件驱动将所有邮件消息写入日志文件以供检查，需要更多根据环境来设置应用程序的信息，可参考 [配置文件](/docs/{{version}}/configuration#environment-configuration).
+代替真实发送，`log` 邮件驱动将所有邮件消息写入日志文件以供检查，需要更多根据环境来设置应用程序的信息，可参考 [配置文件](/docs/laravel/configuration#environment-configuration).
 
 #### 通用收件者
 

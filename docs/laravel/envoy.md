@@ -1,16 +1,4 @@
-# Laravel 的远程服务器任务处理器 Envoy
-
-- [简介](#introduction)
-    - [安装](#installation)
-- [编写任务](#writing-tasks)
-    - [任务启动](#setup)
-    - [任务变量](#variables)
-    - [任务故事](#stories)
-    - [多个服务器](#multiple-servers)
-- [运行任务](#running-tasks)
-    - [任务确认](#confirming-task-execution)
-- [通知](#notifications)
-    - [Slack](#slack)
+# 远程服务器任务处理器 Envoy
 
 
 ## 简介

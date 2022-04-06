@@ -1,11 +1,4 @@
-# Laravel 的服务提供器
-
-- [简介](#introduction)
-- [编写服务提供器](#writing-service-providers)
-    - [注册方法](#the-register-method)
-    - [引导方法](#the-boot-method)
-- [注册提供器](#registering-providers)
-- [延迟提供器](#deferred-providers)
+# 服务提供器
 
 
 ## 简介
@@ -21,7 +14,7 @@ Laravel 的 `config/app.php` 文件中有一个 `providers` 数组。数组中�
 
 ## 编写服务提供器
 
-所有服务提供器都会继承 `Illuminate\Support\ServiceProvider` 类。大多数服务提供器都包含 `register` 和 `boot` 方法。在 `register` 方法中，你**只需要绑定类到 [服务容器](/docs/{{version}}/container)**中。而不需要尝试在 `register` 方法中注册任何事件监听器、路由或任何其他功能。
+所有服务提供器都会继承 `Illuminate\Support\ServiceProvider` 类。大多数服务提供器都包含 `register` 和 `boot` 方法。在 `register` 方法中，你**只需要绑定类到 [服务容器](/docs/laravel/container)**中。而不需要尝试在 `register` 方法中注册任何事件监听器、路由或任何其他功能。
 
 使用 Artisan 命令行界面，通过 `make:provider` 命令生成一个新的提供器：
 
@@ -30,7 +23,7 @@ Laravel 的 `config/app.php` 文件中有一个 `providers` 数组。数组中�
 
 ### 注册方法
 
-在 `register` 方法中，你只需要将类绑定到 [服务容器](/docs/{{version}}/container) 中。而不需要尝试在 `register` 方法中注册任何事件监听器、路由或者任何其他功能。否则，你可能会意外使用到尚未加载的服务提供器提供的服务。
+在 `register` 方法中，你只需要将类绑定到 [服务容器](/docs/laravel/container) 中。而不需要尝试在 `register` 方法中注册任何事件监听器、路由或者任何其他功能。否则，你可能会意外使用到尚未加载的服务提供器提供的服务。
 
 让我们来看一个基本的服务提供器。在你的任何服务提供器方法中，你可以通过 `$app` 属性来访问服务容器：
 
@@ -56,7 +49,7 @@ Laravel 的 `config/app.php` 文件中有一个 `providers` 数组。数组中�
         }
     }
 
-这个服务提供器只定义了一个 `register` 方法，并使用该方法在服务容器中定义了一个 `Riak\Connection` 实现。 如果你不了解服务容器的工作原理，请查看其 [文档](/docs/{{version}}/container).
+这个服务提供器只定义了一个 `register` 方法，并使用该方法在服务容器中定义了一个 `Riak\Connection` 实现。 如果你不了解服务容器的工作原理，请查看其 [文档](/docs/laravel/container).
 
 
 ### 引导方法
@@ -86,7 +79,7 @@ Laravel 的 `config/app.php` 文件中有一个 `providers` 数组。数组中�
 
 #### 引导方法依赖注入
 
-你可以为服务提供器的 `boot` 方法设置类型提示。[服务容器](/docs/{{version}}/container) 会自动注入你需要的任何依赖项：
+你可以为服务提供器的 `boot` 方法设置类型提示。[服务容器](/docs/laravel/container) 会自动注入你需要的任何依赖项：
 
     use Illuminate\Contracts\Routing\ResponseFactory;
 
@@ -113,7 +106,7 @@ Laravel 的 `config/app.php` 文件中有一个 `providers` 数组。数组中�
 
 ## 延迟提供器
 
-如果你的提供器**仅**在 [服务容器](/docs/{{version}}/container) 中注册绑定，就可以选择推迟其注册，直到当它真正需要注册绑定。推迟加载这种提供器会提高应用程序的性能，因为它不会在每次请求时都从文件系统中加载。
+如果你的提供器**仅**在 [服务容器](/docs/laravel/container) 中注册绑定，就可以选择推迟其注册，直到当它真正需要注册绑定。推迟加载这种提供器会提高应用程序的性能，因为它不会在每次请求时都从文件系统中加载。
 
 Laravel 编译并保存延迟服务提供器提供的所有服务的列表，以及其服务提供器类的名称。因此，只有当你在尝试解析其中一项服务时，Laravel 才会加载服务提供器。
 

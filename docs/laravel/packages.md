@@ -1,18 +1,4 @@
-# Laravel 的扩展插件开发指南
-
-- [简介](#introduction)
-    - [Facade 注解](#a-note-on-facades)
-- [扩展包发现](#package-discovery)
-- [服务提供者](#service-providers)
-- [资源文件](#resources)
-    - [配置](#configuration)
-    - [数据库迁移](#migrations)
-    - [路由](#routes)
-    - [语言包](#translations)
-    - [视图](#views)
-- [命令](#commands)
-- [公用 Assets](#public-assets)
-- [发布群组文件](#publishing-file-groups)
+# 扩展插件开发指南
 
 
 ## 简介
@@ -31,7 +17,7 @@
 
 ## 扩展包发现
 
-在 Laravel 应用程序的 `config/app.php` 配置文件中，`providers` 选项定义了应该被 Laravel 加载的服务提供者的列表。当有人安装你的扩展包时，你需要让你的服务提供者包含在这个列表里。而不是要求用户手动将你的服务提供者添加到这个列表里，你可能需要在你扩展包 `composer.json` 文件的 `extra` 部分的定义这些提供者。除了服务提供者，你也要列出可能想要注册的 [facades](/docs/{{version}}/facades)：
+在 Laravel 应用程序的 `config/app.php` 配置文件中，`providers` 选项定义了应该被 Laravel 加载的服务提供者的列表。当有人安装你的扩展包时，你需要让你的服务提供者包含在这个列表里。而不是要求用户手动将你的服务提供者添加到这个列表里，你可能需要在你扩展包 `composer.json` 文件的 `extra` 部分的定义这些提供者。除了服务提供者，你也要列出可能想要注册的 [facades](/docs/laravel/facades)：
 
     "extra": {
         "laravel": {
@@ -71,9 +57,9 @@
 
 ## 服务提供者
 
-[服务提供者](/docs/{{version}}/providers) 是你的扩展包与 Laravel 连接的重点。服务提供者负责绑定一些东西至 Laravel 的 [服务容器](/docs/{{version}}/container) 并告知 Laravel 要从哪加载扩展包的资源，例如视图、配置文件、语言包。
+[服务提供者](/docs/laravel/providers) 是你的扩展包与 Laravel 连接的重点。服务提供者负责绑定一些东西至 Laravel 的 [服务容器](/docs/laravel/container) 并告知 Laravel 要从哪加载扩展包的资源，例如视图、配置文件、语言包。
 
-服务提供者继承了 `Illuminate\Support\ServiceProvider` 类并包含了两个方法： `register` 和 `boot`. 。基底的 `ServiceProvider` 类被放置在 Composer 的 `illuminate/support` 扩展包，你必须将它加入至你自己的扩展包依赖中。若要了解更多关于服务提供者的结构与用途，请查阅 [它的文档](/docs/{{version}}/providers)。
+服务提供者继承了 `Illuminate\Support\ServiceProvider` 类并包含了两个方法： `register` 和 `boot`. 。基底的 `ServiceProvider` 类被放置在 Composer 的 `illuminate/support` 扩展包，你必须将它加入至你自己的扩展包依赖中。若要了解更多关于服务提供者的结构与用途，请查阅 [它的文档](/docs/laravel/providers)。
 
 
 ## 资源文件
@@ -137,7 +123,7 @@
 
 ### 数据库迁移
 
-如果你的扩展包包含 [数据库迁移](/docs/{{version}}/migrations) ，你需要使用 `loadMigrationsFrom` 方法告知 Laravel 如何去加载他们。`loadMigrationsFrom` 方法只需要你的扩展包的迁移文件路径作为唯一参数：
+如果你的扩展包包含 [数据库迁移](/docs/laravel/migrations) ，你需要使用 `loadMigrationsFrom` 方法告知 Laravel 如何去加载他们。`loadMigrationsFrom` 方法只需要你的扩展包的迁移文件路径作为唯一参数：
 
     /**
      * 在注册后进行服务的启动。
@@ -154,7 +140,7 @@
 
 ### 语言包
 
-如果你的扩展包里面包含了 [本地化](/docs/{{version}}/localization) ，则可以使用 `loadTranslationsFrom` 方法来告知 Laravel 该如何加载它们。举个例子，如果你的扩展包名称为 `courier` ，你可以按照以下方式将其添加至服务提供者的 `boot` 方法：
+如果你的扩展包里面包含了 [本地化](/docs/laravel/localization) ，则可以使用 `loadTranslationsFrom` 方法来告知 Laravel 该如何加载它们。举个例子，如果你的扩展包名称为 `courier` ，你可以按照以下方式将其添加至服务提供者的 `boot` 方法：
 
     /**
      * 在注册后进行服务的启动。
@@ -193,7 +179,7 @@
 
 ### 视图
 
-若要在 Laravel 中注册扩展包 [视图](/docs/{{version}}/views)，则必须告诉 Laravel 你的视图位置。你可以使用服务提供者的 `loadViewsFrom` 方法来实现。`loadViewsFrom` 方法允许两个参数：视图模板路径与扩展包名称。例如，如果你的扩展包名称是 `courier` ，你可以按照以下方式将其添加至服务提供者的 `boot` 方法内：
+若要在 Laravel 中注册扩展包 [视图](/docs/laravel/views)，则必须告诉 Laravel 你的视图位置。你可以使用服务提供者的 `loadViewsFrom` 方法来实现。`loadViewsFrom` 方法允许两个参数：视图模板路径与扩展包名称。例如，如果你的扩展包名称是 `courier` ，你可以按照以下方式将其添加至服务提供者的 `boot` 方法内：
 
     /**
      * 在注册后进行服务的启动。
@@ -238,7 +224,7 @@
 
 ## 命令
 
-给你的扩展包注册 Artisan 命令，您可以使用 `commands` 方法。此方法需要一个命令类的数组。一旦命令被注册，您可以使用 [Artisan 命令行](/docs/{{version}}/artisan) 执行它们：
+给你的扩展包注册 Artisan 命令，您可以使用 `commands` 方法。此方法需要一个命令类的数组。一旦命令被注册，您可以使用 [Artisan 命令行](/docs/laravel/artisan) 执行它们：
 
     /**
      * 在注册后进行服务的启动。

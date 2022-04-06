@@ -1,13 +1,4 @@
-# Laravel 的部署
-
-- [简介](#introduction)
-- [服务器配置](#server-configuration)
-    - [Nginx](#nginx)
-- [优化](#optimization)
-    - [优化自动加载](#autoloader-optimization)
-    - [优化配置加载](#optimizing-configuration-loading)
-    - [优化路由加载](#optimizing-route-loading)
-- [Forge 部署](#deploying-with-forge)
+# 部署
 
 
 ## 简介

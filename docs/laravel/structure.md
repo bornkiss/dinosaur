@@ -1,30 +1,4 @@
-# Laravel 的文件夹结构
-
-- [简介](#introduction)
-- [根目录](#the-root-directory)
-    - [`app` 目录](#the-root-app-directory)
-    - [`bootstrap` 目录](#the-bootstrap-directory)
-    - [`config` 目录](#the-config-directory)
-    - [`database` 目录](#the-database-directory)
-    - [`public` 目录](#the-public-directory)
-    - [`resources` 目录](#the-resources-directory)
-    - [`routes` 目录](#the-routes-directory)
-    - [`storage` 目录](#the-storage-directory)
-    - [`tests` 目录](#the-tests-directory)
-    - [`vendor` 目录](#the-vendor-directory)
-- [App 目录](#the-app-directory)
-  - [`Console` 目录](#the-console-directory)
-    - [`Events` 目录](#the-events-directory)
-    - [`Exceptions` 目录](#the-exceptions-directory)
-    - [`Http` 目录](#the-http-directory)
-    - [`Jobs` 目录](#the-jobs-directory)
-    - [`Listeners` 目录](#the-listeners-directory)
-    - [`Mail` 目录](#the-mail-directory)
-    - [`Notifications` 目录](#the-notifications-directory)
-    - [`Policies` 目录](#the-policies-directory)
-    - [`Providers` 目录](#the-providers-directory)
-    - [`Rules` 目录](#the-rules-directory)
-
+# 文件夹结构
 
 ## 简介
 
@@ -113,12 +87,12 @@
 
 #### `Console` 目录
 
-`Console` 目录包含了所有自定义的 Artisan 命令。这些命令可以通过 `make:command` 来生成。这个目录还包含了控制台内核，可以用来注册你的自定义 Artisan 命令和你定义的 [计划任务](/docs/{{version}}/scheduling) 的地方。
+`Console` 目录包含了所有自定义的 Artisan 命令。这些命令可以通过 `make:command` 来生成。这个目录还包含了控制台内核，可以用来注册你的自定义 Artisan 命令和你定义的 [计划任务](/docs/laravel/scheduling) 的地方。
 
 
 #### `Events` 目录
 
-`Events` 目录默认是不存在的，它会在你运行 Artisan 命令 `event:generate` 或 `event:make` 时生成。`Events` 目录存放了 [事件类](/docs/{{version}}/events)。可以使用事件来提醒应用其他部分发生了特定的操作，为应用提供了大量的灵活性和解耦。
+`Events` 目录默认是不存在的，它会在你运行 Artisan 命令 `event:generate` 或 `event:make` 时生成。`Events` 目录存放了 [事件类](/docs/laravel/events)。可以使用事件来提醒应用其他部分发生了特定的操作，为应用提供了大量的灵活性和解耦。
 
 
 #### `Exceptions` 目录
@@ -133,12 +107,12 @@
 
 #### `Jobs` 目录
 
-`Jobs` 目录默认是不存在的，它会在你运行Artisan 命令 `make:job` 时生成。这个目录存放了应用中的 [队列任务](/docs/{{version}}/queues)。应用的任务可以被推送到队列或者在当前请求的生命周期内同步运行。在当前请求期间同步运行的任务可以看做是一个「命令」，因为它们是 [命令模式](https://en.wikipedia.org/wiki/Command_pattern) 的实现。
+`Jobs` 目录默认是不存在的，它会在你运行Artisan 命令 `make:job` 时生成。这个目录存放了应用中的 [队列任务](/docs/laravel/queues)。应用的任务可以被推送到队列或者在当前请求的生命周期内同步运行。在当前请求期间同步运行的任务可以看做是一个「命令」，因为它们是 [命令模式](https://en.wikipedia.org/wiki/Command_pattern) 的实现。
 
 
 #### `Listeners` 目录
 
-`Listeners` 目录默认是不存在的，它会在你运行 Artisan 命令 `event:generate` 或 `make:listener` 时生成。`Listeners` 目录包含了用来处理 [事件](/docs/{{version}}/events) 的类。事件监听器接收事件实例并执行响应该事件被触发的逻辑。例如，`UserRegistered` 事件可能由 `SendWelcomeEmail` 监听器处理。
+`Listeners` 目录默认是不存在的，它会在你运行 Artisan 命令 `event:generate` 或 `make:listener` 时生成。`Listeners` 目录包含了用来处理 [事件](/docs/laravel/events) 的类。事件监听器接收事件实例并执行响应该事件被触发的逻辑。例如，`UserRegistered` 事件可能由 `SendWelcomeEmail` 监听器处理。
 
 
 #### `Mail` 目录
@@ -153,19 +127,19 @@
 
 #### `Policies` 目录
 
-`Policies` 目录默认不存在，它会通过运行 Artisan 命令 `make:policy` 来创建。`Policies` 目录包含了应用的授权策略类。策略可以用来决定一个用户是否有权限去操作指定资源。更多详情可以查看 [授权文档](/docs/{{version}}/authorization)。
+`Policies` 目录默认不存在，它会通过运行 Artisan 命令 `make:policy` 来创建。`Policies` 目录包含了应用的授权策略类。策略可以用来决定一个用户是否有权限去操作指定资源。更多详情可以查看 [授权文档](/docs/laravel/authorization)。
 
 
 #### `Providers` 目录
 
-`Providers` 目录包含了应用的所有 [服务提供器](/docs/{{version}}/providers)。服务提供器通过在服务容器中绑定服务、注册事件、以及执行其他任务来为即将到来的请求做准备来启动应用。
+`Providers` 目录包含了应用的所有 [服务提供器](/docs/laravel/providers)。服务提供器通过在服务容器中绑定服务、注册事件、以及执行其他任务来为即将到来的请求做准备来启动应用。
 
 在一个新的 Laravel 应用里，这个目录已经包含了一些服务提供器。你可以按照需要把自由添加自己的服务提供器到该目录。
 
 
 #### `Rules` 目录
 
-`Rules` 目录默认不存在，它会在运行 Artisan 命令 `make:rule` 命令时被创建。`Rules` 目录包含应用自定义验证规则对象。这些规则意在将复杂的验证逻辑封装在一个简单的对象中。更多详情可以查看 [验证文档](/docs/{{version}}/validation)。
+`Rules` 目录默认不存在，它会在运行 Artisan 命令 `make:rule` 命令时被创建。`Rules` 目录包含应用自定义验证规则对象。这些规则意在将复杂的验证逻辑封装在一个简单的对象中。更多详情可以查看 [验证文档](/docs/laravel/validation)。
 
 ## 译者署名
 | 用户名 | 头像 | 职能 | 签名 |

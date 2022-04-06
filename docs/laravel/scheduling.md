@@ -1,18 +1,4 @@
-# Laravel 的任务调度（计划任务）功能 Task Scheduling
-
-- [简介](#introduction)
-
-- [定义调度](#defining-schedules)
-
-    - [Artisan 命令调度](#scheduling-artisan-commands)
-    - [队列任务调度](#scheduling-queued-jobs)
-    - [Shell 调度命令](#scheduling-shell-commands)
-    - [调度频率设置](#schedule-frequency-options)
-    - [避免任务重复](#preventing-task-overlaps)
-    - [维护模式](#maintenance-mode)
-
-- [任务输出](#task-output)
-- [任务钩子](#task-hooks)
+# 任务调度（计划任务）功能 Task Scheduling
 
 
 ## 简介
@@ -75,7 +61,7 @@ class Kernel extends ConsoleKernel
 
 ### Artisan 命令调度
 
-除了计划 `Closure` 调用，你还能调度 [Artisan 命令](/docs/{{version}}/artisan) 和操作系统命令。举个例子，你可以给 `command` 方法传递命令名称或者类名称来调度一个 `Artisan` 命令：
+除了计划 `Closure` 调用，你还能调度 [Artisan 命令](/docs/laravel/artisan) 和操作系统命令。举个例子，你可以给 `command` 方法传递命令名称或者类名称来调度一个 `Artisan` 命令：
 
 ````
 $schedule->command('emails:send --force')->daily();
@@ -86,7 +72,7 @@ $schedule->command(EmailsCommand::class, ['--force'])->daily();
 
 ### 队列任务调度
 
-`job` 方法可以用来调度 [队列任务](/docs/{{version}}/queues)。这个方法提供了一种快捷方式来调度任务，无需使用 `call` 方法手动创建闭包来调度任务：
+`job` 方法可以用来调度 [队列任务](/docs/laravel/queues)。这个方法提供了一种快捷方式来调度任务，无需使用 `call` 方法手动创建闭包来调度任务：
 
 ````
 $schedule->job(new Heartbeat)->everyFiveMinutes();
@@ -204,12 +190,12 @@ $schedule->command('emails:send')->daily()->skip(function () {
 $schedule->command('emails:send')->withoutOverlapping();
 ````
 
-在上面这个例子中，如果没有其它 [Artisan 命令](/docs/{{version}}/artisan)  `emails:send` 在运行的话，此任务将于每分钟被运行一次。如果你的任务在执行时间上有很大的不同，你无法准确预测给定任务需要多长时间，`withoutOverlapping` 方法将会特别有帮助。
+在上面这个例子中，如果没有其它 [Artisan 命令](/docs/laravel/artisan)  `emails:send` 在运行的话，此任务将于每分钟被运行一次。如果你的任务在执行时间上有很大的不同，你无法准确预测给定任务需要多长时间，`withoutOverlapping` 方法将会特别有帮助。
 
 
 ### 维护模式
 
-当 Laravel 处于 [维护模式](/docs/{{version}}/configuration#maintenance-mode) 时，Laravel 的调度功能将不会生效。这是因为我们不想让任务调度干扰你服务器上可能还未完成的项目。然而，如果你想强制某个任务在维护模式下运行的话，你可以使用 `evenInMaintenanceMode` 方法：
+当 Laravel 处于 [维护模式](/docs/laravel/configuration#maintenance-mode) 时，Laravel 的调度功能将不会生效。这是因为我们不想让任务调度干扰你服务器上可能还未完成的项目。然而，如果你想强制某个任务在维护模式下运行的话，你可以使用 `evenInMaintenanceMode` 方法：
 
 ````
 $schedule->command('emails:send')->evenInMaintenanceMode();
@@ -234,7 +220,7 @@ $schedule->command('emails:send')
      ->appendOutputTo($filePath);
 ````
 
-使用 `emailOutputTo` 方法，你可以通过电子邮件将输出发送到你所指定的邮箱上。在发送任务的输出之前，你应该先配置 Laravel 的 [电子邮件服务](/docs/{{version}}/mail):
+使用 `emailOutputTo` 方法，你可以通过电子邮件将输出发送到你所指定的邮箱上。在发送任务的输出之前，你应该先配置 Laravel 的 [电子邮件服务](/docs/laravel/mail):
 
 ````
 $schedule->command('foo')

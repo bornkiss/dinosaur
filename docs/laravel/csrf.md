@@ -1,14 +1,5 @@
 # Laravel 下的伪造跨站请求保护 CSRF
 
-- [Laravel 下的伪造跨站请求保护 CSRF](#laravel-下的伪造跨站请求保护-csrf)
-  - [简介](#简介)
-      - [CSRF 令牌 & JavaScript](#csrf-令牌--javascript)
-  - [CSRF 白名单](#csrf-白名单)
-  - [X-CSRF-TOKEN](#x-csrf-token)
-  - [X-XSRF-TOKEN](#x-xsrf-token)
-  - [译者署名](#译者署名)
-
-
 ## 简介
 
 Laravel 可以轻松地保护应用程序免受 [跨站请求伪造](https://en.wikipedia.org/wiki/Cross-site_request_forgery) (CSRF) 的攻击。跨站请求伪造是一种恶意的攻击，它凭借已通过身份验证的用户身份来运行未经过授权的命令。
@@ -22,7 +13,7 @@ Laravel 会自动为每个活跃用户的会话生成一个 CSRF「令牌」。�
         ...
     </form>
 
-包含在 `web` 中间件组里的 `VerifyCsrfToken` [中间件](/docs/{{version}}/middleware)会自动验证请求里的令牌是否与存储在会话中令牌匹配。
+包含在 `web` 中间件组里的 `VerifyCsrfToken` [中间件](/docs/laravel/middleware)会自动验证请求里的令牌是否与存储在会话中令牌匹配。
 
 #### CSRF 令牌 & JavaScript
 

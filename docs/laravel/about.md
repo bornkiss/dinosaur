@@ -1,4 +1,4 @@
-# Laravel 5.5 中文文档
+# 前言
 ## 说明
 
 为了更好的阅读文档，请查看 [Laravel China 文档导读](https://laravel-china.org/topics/2095)。

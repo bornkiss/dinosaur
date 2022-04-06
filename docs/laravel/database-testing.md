@@ -1,15 +1,5 @@
 # Laravel 测试之 - 数据库测试
 
-- [简介](#introduction)
-- [每次测试后重置数据库](#resetting-the-database-after-each-test)
-- [创建模型工厂](#writing-factories)
-    - [工厂状态](#factory-states)
-- [在测试中使用模型工厂](#using-factories)
-    - [创建模型](#creating-models)
-    - [持久化模型](#persisting-models)
-    - [模型关联](#relationships)
-- [可用的断言方法](#available-assertions)
-
 
 ## 简介
 
@@ -61,7 +51,7 @@ Laravel 提供了多种有用的工具来让你更容易的测试使用数据库
 
 ## 创建模型工厂
 
-测试时，常常需要在运行测试之前写入一些数据到数据库中。创建测试数据时，除了手动的来设置每个字段的值，还可以使用 [Eloquent 模型](/docs/{{version}}/eloquent) 的「工厂」来设置每个属性的默认值。在开始之前，你可以先查看下应用程序的 `database/factories/UserFactory.php` 文件。此文件包含了一个现成的模型工厂定义：
+测试时，常常需要在运行测试之前写入一些数据到数据库中。创建测试数据时，除了手动的来设置每个字段的值，还可以使用 [Eloquent 模型](/docs/laravel/eloquent) 的「工厂」来设置每个属性的默认值。在开始之前，你可以先查看下应用程序的 `database/factories/UserFactory.php` 文件。此文件包含了一个现成的模型工厂定义：
 
     $factory->define(App\User::class, function (Faker\Generator $faker) {
         static $password;
@@ -156,7 +146,7 @@ Laravel 提供了多种有用的工具来让你更容易的测试使用数据库
 
 ### 模型关联
 
-在本例中，我们还会增加关联至我们所创建的模型。当使用 `create` 方法创建多个模型时，它会返回一个 Eloquent [集合实例](/docs/{{version}}/eloquent-collections)，让你能够使用集合所提供的便利函数，像是 `each`：
+在本例中，我们还会增加关联至我们所创建的模型。当使用 `create` 方法创建多个模型时，它会返回一个 Eloquent [集合实例](/docs/laravel/eloquent-collections)，让你能够使用集合所提供的便利函数，像是 `each`：
 
     $users = factory(App\User::class, 3)
                ->create()

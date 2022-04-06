@@ -1,11 +1,4 @@
-# Laravel 的密码重置功能
-
-- [简介](#introduction)
-- [数据库注意事项](#resetting-database)
-- [路由](#resetting-routing)
-- [视图](#resetting-views)
-- [重置密码后](#after-resetting-passwords)
-- [自定义](#password-customization)
+# 密码重置功能
 
 
 ## 简介

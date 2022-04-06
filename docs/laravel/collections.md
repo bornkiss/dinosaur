@@ -1,10 +1,4 @@
-# Laravel 的集合 Collection
-
-- [简介](#introduction)
-    - [创建集合](#creating-collections)
-- [可用的方法](#available-methods)
-- [高阶消息传递](#higher-order-messages)
-
+# 集合 Collection
 
 ## 简介
 
@@ -26,7 +20,7 @@
 
     $collection = collect([1, 2, 3]);
 
-> {tip} 默认情况下， [Eloquent](/docs/{{version}}/eloquent) 查询的结果返回的内容都是 `Collection` 实例。
+> {tip} 默认情况下， [Eloquent](/docs/laravel/eloquent) 查询的结果返回的内容都是 `Collection` 实例。
 
 
 ## 可用的方法
@@ -188,7 +182,7 @@
 
     // [[1, 2, 3, 4], [5, 6, 7]]
 
-这个方法特别适用在使用网格系统时的 [视图](/docs/{{version}}/views)，如 [Bootstrap](http://getbootstrap.com/css/#grid)。想像你有一个 [Eloquent](/docs/{{version}}/eloquent) 模型的集合要在网格中显示：
+这个方法特别适用在使用网格系统时的 [视图](/docs/laravel/views)，如 [Bootstrap](http://getbootstrap.com/css/#grid)。想像你有一个 [Eloquent](/docs/laravel/eloquent) 模型的集合要在网格中显示：
 
 ```HTML
 @foreach ($products->chunk(3) as $chunk)
@@ -1383,7 +1377,7 @@
 
     // [9, 18, 27, 36, 45, 54, 63, 72, 81, 90]
 
-使用这个方法可以与工厂结合使用创建出 [Eloquent](/docs/{{version}}/eloquent) 模型：
+使用这个方法可以与工厂结合使用创建出 [Eloquent](/docs/laravel/eloquent) 模型：
 
     $categories = Collection::times(3, function ($number) {
         return factory(Category::class)->create(['name' => 'Category #'.$number]);
@@ -1402,7 +1396,7 @@
 
 #### `toArray()` {collection-method}
 
-`toArray` 方法将集合转换成 PHP `数组`。如果集合的值是 [Eloquent](/docs/{{version}}/eloquent) 模型，那也会被转换成数组：
+`toArray` 方法将集合转换成 PHP `数组`。如果集合的值是 [Eloquent](/docs/laravel/eloquent) 模型，那也会被转换成数组：
 
     $collection = collect(['name' => 'Desk', 'price' => 200]);
 

@@ -1,15 +1,5 @@
 # Laravel 队列监控面板 - Horizon
 
-- [介绍](#introduction)
-- [安装](#installation)
-    - [配置](#configuration)
-    - [仪表盘授权](#dashboard-authentication)
-- [运行 Horizon](#running-horizon)
-    - [部署 Horizon](#deploying-horizon)
-- [标签](#tags)
-- [通知](#notifications)
-- [Metrics](#metrics)
-
 
 ## 介绍
 
@@ -187,7 +177,7 @@ Horizon 允许我们给队列任务打上一系列标签，包括 mailables、�
 
 ## Metrics
 
-Horizon 包含一个 metrics 仪表盘，它可以提供任务和队列等待时间和吞吐量信息，为了填充此仪表盘，需要使用应用的 [scheduler](/docs/{{version}}/scheduling) 每五分钟运行一次 Horizon 的 Artisan 命令 `snapshot`：
+Horizon 包含一个 metrics 仪表盘，它可以提供任务和队列等待时间和吞吐量信息，为了填充此仪表盘，需要使用应用的 [scheduler](/docs/laravel/scheduling) 每五分钟运行一次 Horizon 的 Artisan 命令 `snapshot`：
 
     /**
      * Define the application's command schedule.

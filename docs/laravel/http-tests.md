@@ -1,15 +1,5 @@
 # Laravel 测试之：HTTP 测试
 
-- [Laravel 测试之：HTTP 测试](#laravel-测试之http-测试)
-  - [简介](#简介)
-  - [Session / 认证](#session--认证)
-  - [Testing JSON APIs](#testing-json-apis)
-    - [验证完全匹配](#验证完全匹配)
-  - [测试文件上传](#测试文件上传)
-      - [自定义模拟文件](#自定义模拟文件)
-  - [可用的断言方法](#可用的断言方法)
-  - [译者署名](#译者署名)
-
 
 ## 简介
 
@@ -57,7 +47,7 @@ Laravel 提供了几个可在测试时使用 Session 的辅助函数。首先，
         }
     }
 
-当然，一般使用 Session 时都是用于维持用户的状态，如认证用户。`actingAs` 辅助函数提供了简单的方式来让指定的用户认证为当前的用户。例如，我们可以使用 [模型工厂](/docs/{{version}}/database-testing#writing-factories) 来生成并认证用户：
+当然，一般使用 Session 时都是用于维持用户的状态，如认证用户。`actingAs` 辅助函数提供了简单的方式来让指定的用户认证为当前的用户。例如，我们可以使用 [模型工厂](/docs/laravel/database-testing#writing-factories) 来生成并认证用户：
 
     <?php
 

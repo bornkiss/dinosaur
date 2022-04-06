@@ -1,8 +1,4 @@
-# Laravel 的加密解密机制
-
-- [简介](#introduction)
-- [设置](#configuration)
-- [使用](#using-the-encrypter)
+# 加密解密机制
 
 
 ## 简介

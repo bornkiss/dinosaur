@@ -1,16 +1,5 @@
 # Eloquent: API 资源
 
-- [简介](#introduction)
-- [生成资源](#generating-resources)
-- [概念综述](#concept-overview)
-- [编写资源](#writing-resources)
-    - [数据包裹](#data-wrapping)
-    - [分页](#pagination)
-    - [条件属性](#conditional-attributes)
-    - [条件关联](#conditional-relationships)
-    - [添加元数据](#adding-meta-data)
-- [资源响应](#resource-responses)
-
 
 ## 简介
 
@@ -259,7 +248,7 @@
         ]
     }
 
-你可以使用资源基类的 `withoutWrapping` 方法来禁用顶层资源的包裹。你应该在 `AppServiceProvider` 或其他在程序每一个请求中都会被加载的 [服务提供者](/docs/{{version}}/providers) 中调用此方法：
+你可以使用资源基类的 `withoutWrapping` 方法来禁用顶层资源的包裹。你应该在 `AppServiceProvider` 或其他在程序每一个请求中都会被加载的 [服务提供者](/docs/laravel/providers) 中调用此方法：
 
     <?php
 

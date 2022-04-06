@@ -1,18 +1,5 @@
 # Laravel 服务容器解析
 
-- [简介](#introduction)
-- [绑定](#binding)
-    - [绑定基础](#binding-basics)
-    - [绑定接口实现](#binding-interfaces-to-implementations)
-    - [上下文绑定](#contextual-binding)
-    - [标记](#tagging)
-- [解析](#resolving)
-    - [Make 方法](#the-make-method)
-    - [自动注入](#automatic-injection)
-- [容器事件](#container-events)
-- [PSR-11](#psr-11)
-
-
 ## 简介
 
 Laravel 服务容器是用于管理类的依赖和执行依赖注入的工具。依赖注入这个花俏名词实质上是指：类的依赖项通过构造函数，或者某些情况下通过「setter」方法「注入」到类中。
@@ -61,7 +48,7 @@ Laravel 服务容器是用于管理类的依赖和执行依赖注入的工具。
         }
     }
 
-在这个例子中，控制器 `UserController` 需要从数据源中获取 users 。因此，我们要**注入**可以获取 users 的服务。在这种情况下，`UserRepository` 可能是使用 [Eloquent](/docs/{{version}}/eloquent) 从数据库中获取 user 信息。因为 Repository 是通过 `UserRepository` 注入的，所以我们可以轻易地将其切换为另一个实现。这种注入方式的便利之处还体现在当我们为应用编写测试时，我们还可以轻松地「模拟」或创建 `UserRepository` 的虚拟实现。
+在这个例子中，控制器 `UserController` 需要从数据源中获取 users 。因此，我们要**注入**可以获取 users 的服务。在这种情况下，`UserRepository` 可能是使用 [Eloquent](/docs/laravel/eloquent) 从数据库中获取 user 信息。因为 Repository 是通过 `UserRepository` 注入的，所以我们可以轻易地将其切换为另一个实现。这种注入方式的便利之处还体现在当我们为应用编写测试时，我们还可以轻松地「模拟」或创建 `UserRepository` 的虚拟实现。
 
 想要构建强大的大型应用，至关重要的一件事是：要深刻的理解 Laravel 服务容器。当然，为 Laravel 的核心代码做出贡献也一样。
 
@@ -72,7 +59,7 @@ Laravel 服务容器是用于管理类的依赖和执行依赖注入的工具。
 
 ### 绑定基础
 
-因为几乎所有服务容器都是在 [服务提供器](/docs/{{version}}/providers) 中注册绑定的，所以文档中大多数例子都是使用了在服务提供器中绑定的容器。
+因为几乎所有服务容器都是在 [服务提供器](/docs/laravel/providers) 中注册绑定的，所以文档中大多数例子都是使用了在服务提供器中绑定的容器。
 
 > {tip} 如果类没有依赖任何接口，就没有必要将类绑定到容器中。容器不需要指定如何构建这些对象，因为它可以使用反射自动解析这些对象。
 
@@ -139,7 +126,7 @@ Laravel 服务容器是用于管理类的依赖和执行依赖注入的工具。
 
 ### 上下文绑定
 
-有时候，你可能有两个类使用了相同的接口，但你希望每个类都能注入不同的实现。例如，两个控制器可能需要依赖不同的 `Illuminate\Contracts\Filesystem\Filesystem` [契约](/docs/{{version}}/contracts) 实现。  Laravel 提供了一个简单、优雅的接口来定义这个行为：
+有时候，你可能有两个类使用了相同的接口，但你希望每个类都能注入不同的实现。例如，两个控制器可能需要依赖不同的 `Illuminate\Contracts\Filesystem\Filesystem` [契约](/docs/laravel/contracts) 实现。  Laravel 提供了一个简单、优雅的接口来定义这个行为：
 
     use Illuminate\Support\Facades\Storage;
     use App\Http\Controllers\PhotoController;
@@ -200,7 +187,7 @@ Laravel 服务容器是用于管理类的依赖和执行依赖注入的工具。
 
 #### 自动注入
 
-你可以简单地使用「类型提示」的方式在由容器解析的类的构造函数中添加依赖项，包括 [控制器](/docs/{{version}}/controllers)、[事件监听器](/docs/{{version}}/events)、[队列任务](/docs/{{version}}/queues)、[中间件](/docs/{{version}}/middleware) 等。 事实上，这是你的大多数对象也应该由容器解析。
+你可以简单地使用「类型提示」的方式在由容器解析的类的构造函数中添加依赖项，包括 [控制器](/docs/laravel/controllers)、[事件监听器](/docs/laravel/events)、[队列任务](/docs/laravel/queues)、[中间件](/docs/laravel/middleware) 等。 事实上，这是你的大多数对象也应该由容器解析。
 
 例如，你可以在控制器的构造函数中对应用程序定义的 Repository 使用类型提示。Repository 会被自动解析并注入到类中：
 

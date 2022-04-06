@@ -1,21 +1,9 @@
-# Laravel 的 HTTP 请求
-
-- [获取请求](#accessing-the-request)
-    - [请求路径 & 方法](#request-path-and-method)
-    - [PSR-7 请求](#psr7-requests)
-- [输入预处理 & 规范化](#input-trimming-and-normalization)
-- [获取输入](#retrieving-input)
-    - [旧输入](#old-input)
-    - [Cookies](#cookies)
-- [文件](#files)
-    - [获取上传文件](#retrieving-uploaded-files)
-    - [储存上传文件](#storing-uploaded-files)
-- [配置可信代理](#configuring-trusted-proxies)
+#  HTTP 请求
 
 
 ## 获取请求
 
-要通过依赖注入的方式来获取当前 HTTP 请求的实例，你应该在控制器方法中类型提示 `Illuminate\Http\Request`。传入的请求的实例将通过 [服务容器](/docs/{{version}}/container) 自动注入：
+要通过依赖注入的方式来获取当前 HTTP 请求的实例，你应该在控制器方法中类型提示 `Illuminate\Http\Request`。传入的请求的实例将通过 [服务容器](/docs/laravel/container) 自动注入：
 
     <?php
 
@@ -230,11 +218,11 @@ Laravel 在处理动态属性的优先级是，先在请求的数据中查找，
 
 ### 旧输入
 
-Laravel 允许你将本次请求的数据保留到下一次请求发送前。如果第一次请求的表单不能通过验证，就可以使用这个功能重新填充表单。但是，如果你使用了 Laravel 的 [验证功能](/docs/{{version}}/validation)，你就不需要在手动实现这些方法，因为 Laravel 内置的验证工具会自动调用他们。
+Laravel 允许你将本次请求的数据保留到下一次请求发送前。如果第一次请求的表单不能通过验证，就可以使用这个功能重新填充表单。但是，如果你使用了 Laravel 的 [验证功能](/docs/laravel/validation)，你就不需要在手动实现这些方法，因为 Laravel 内置的验证工具会自动调用他们。
 
 #### 将输入闪存至 Session
 
-`Illuminate\Http\Request` 的 `flash` 方法会将当前输入的数据存进 [session](/docs/{{version}}/session) 中，以便在用户下次发送请求到应用程序之前可以使用它们：
+`Illuminate\Http\Request` 的 `flash` 方法会将当前输入的数据存进 [session](/docs/laravel/session) 中，以便在用户下次发送请求到应用程序之前可以使用它们：
 
     $request->flash();
 
@@ -257,10 +245,10 @@ Laravel 允许你将本次请求的数据保留到下一次请求发送前。如
 
 #### 获取旧输入
 
-若要获取上一次请求中闪存的输入，则可以使用 `Request` 实例中的 `old` 方法。`old` 方法会从 [Session](/docs/{{version}}/session) 取出之前被闪存的输入数据：
+若要获取上一次请求中闪存的输入，则可以使用 `Request` 实例中的 `old` 方法。`old` 方法会从 [Session](/docs/laravel/session) 取出之前被闪存的输入数据：
 
     $username = $request->old('username');
-Laravel 也提供了全局辅助函数 `old`。如果你要在 [Blade 模板](/docs/{{version}}/blade) 中显示旧的输入，使用 `old` 会更加方便。如果给定字段没有旧的输入，则返回 `null`：
+Laravel 也提供了全局辅助函数 `old`。如果你要在 [Blade 模板](/docs/laravel/blade) 中显示旧的输入，使用 `old` 会更加方便。如果给定字段没有旧的输入，则返回 `null`：
 
     <input type="text" name="username" value="{{ old('username') }}">
 
@@ -336,7 +324,7 @@ Laravel 框架创建的每个 cookie 都会被加密并使用验证码进行签�
 ### 存储上传文件
 
 
-要存储上传的文件，先配置好 [文件系统](/docs/{{version}}/filesystem)。你可以使用 `UploadedFile` 的 `store` 方法把上传文件移动到你的某个磁盘上，该文件可能是本地文件系统中的一个位置，甚至像 Amazon S3 这样的云存储位置。
+要存储上传的文件，先配置好 [文件系统](/docs/laravel/filesystem)。你可以使用 `UploadedFile` 的 `store` 方法把上传文件移动到你的某个磁盘上，该文件可能是本地文件系统中的一个位置，甚至像 Amazon S3 这样的云存储位置。
 
 `store` 方法接受相对于文件系统配置的存储文件根目录的路径。这个路径不能包含文件名，因为系统会自动生成唯一的 ID 作为文件名。
 

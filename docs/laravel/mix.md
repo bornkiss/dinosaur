@@ -1,26 +1,4 @@
-# Laravel 的资源任务编译器 Laravel Mix
-
-- [简介](#introduction)
-- [安装 & 配置](#installation)
-- [运行 Mix](#running-mix)
-- [使用样式](#working-with-stylesheets)
-    - [Less](#less)
-    - [Sass](#sass)
-    - [Stylus](#stylus)
-    - [PostCSS](#postcss)
-    - [纯 CSS](#plain-css)
-    - [URL 处理](#url-processing)
-    - [资源映射](#css-source-maps)
-- [使用 JavaScript](#working-with-scripts)
-    - [提取 Vendor](#vendor-extraction)
-    - [React](#react-support)
-    - [原生 JS](#vanilla-js)
-    - [自定义 Webpack 配置](#custom-webpack-configuration)
-- [复制文件 & 目录](#copying-files-and-directories)
-- [版本控制 & 缓存清除](#versioning-and-cache-busting)
-- [Browsersync 重新加载](#browsersync-reloading)
-- [环境变量](#environment-variables)
-- [通知](#notifications)
+# 资源任务编译器 Laravel Mix
 
 
 

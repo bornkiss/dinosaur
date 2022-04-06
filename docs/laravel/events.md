@@ -1,18 +1,4 @@
-# Laravel 的事件系统
-
-- [简介](#introduction)
-- [注册事件与监听器](#registering-events-and-listeners)
-    - [生成事件 & 监听器](#generating-events-and-listeners)
-    - [手动注册事件](#manually-registering-events)
-- [定义事件](#defining-events)
-- [定义监听器](#defining-listeners)
-- [事件监听器队列](#queued-event-listeners)
-    - [手动访问队列](#manually-accessing-the-queue)
-    - [处理失败任务](#handling-failed-jobs)
-- [分发事件](#dispatching-events)
-- [事件订阅者](#event-subscribers)
-    - [编写事件订阅者](#writing-event-subscribers)
-    - [注册事件订阅者](#registering-event-subscribers)
+# 事件系统
 
 
 ## 简介
@@ -82,7 +68,7 @@ Event::listen('event.*', function ($eventName, array $data) {
 
 ## 定义事件
 
-事件类其实就只是一个保存与事件相关的信息的数据容器。例如，假设我们生成的 `OrderShipped` 事件接收一个 [Eloquent ORM](/docs/{{version}}/eloquent) 对象：
+事件类其实就只是一个保存与事件相关的信息的数据容器。例如，假设我们生成的 `OrderShipped` 事件接收一个 [Eloquent ORM](/docs/laravel/eloquent) 对象：
 
 ````
 <?php
@@ -150,7 +136,7 @@ class SendShipmentNotification
 }
 ````
 
-> {tip} 你的事件监听器也可以在构造函数中加入任何依赖关系的类型提示。所有的事件监听器都是通过 Laravel 的 [服务容器](/docs/{{version}}/container) 来解析的，因此所有的依赖都将会被自动注入。
+> {tip} 你的事件监听器也可以在构造函数中加入任何依赖关系的类型提示。所有的事件监听器都是通过 Laravel 的 [服务容器](/docs/laravel/container) 来解析的，因此所有的依赖都将会被自动注入。
 
 #### 停止事件传播
 
@@ -159,7 +145,7 @@ class SendShipmentNotification
 
 ## 事件监听器队列
 
-如果你的监听器中要执行诸如发送邮件或者进行 HTTP 请求等比较慢的任务，你可以选择将其丢给队列处理。在开始使用监听器队列之前，请确保在你的服务器或本地开发环境中能够配置并启动 [队列](/docs/{{version}}/queues) 监听器。
+如果你的监听器中要执行诸如发送邮件或者进行 HTTP 请求等比较慢的任务，你可以选择将其丢给队列处理。在开始使用监听器队列之前，请确保在你的服务器或本地开发环境中能够配置并启动 [队列](/docs/laravel/queues) 监听器。
 
 要指定监听器启动队列，只需将 `ShouldQueue` 接口添加到监听器类。由 Artisan 命令 `event:generate` 生成的监听器已经将此接口导入到当前命名空间中，因此你可以直接使用它：
 
@@ -177,7 +163,7 @@ class SendShipmentNotification implements ShouldQueue
 }
 ````
 
-当这个监听器被事件调用时，事件调度器会自动使用 Laravel 的 [队列系统](/docs/{{version}}/queues)。如果在队列中执行监听器时没有抛出异常，任务会在执行完成后自动从队列中删除。
+当这个监听器被事件调用时，事件调度器会自动使用 Laravel 的 [队列系统](/docs/laravel/queues)。如果在队列中执行监听器时没有抛出异常，任务会在执行完成后自动从队列中删除。
 
 #### 自定义队列的连接和名称
 
@@ -317,7 +303,7 @@ class OrderController extends Controller
 }
 ````
 
-> {tip} 在测试时，Laravel [内置的测试辅助函数](/docs/{{version}}/mocking#mocking-events) 能不需要实际触发监听器就能对事件类型断言。
+> {tip} 在测试时，Laravel [内置的测试辅助函数](/docs/laravel/mocking#mocking-events) 能不需要实际触发监听器就能对事件类型断言。
 
 
 ## 事件订阅者

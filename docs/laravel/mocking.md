@@ -1,14 +1,5 @@
 # Laravel 测试之：测试模拟器
 
-- [介绍](#introduction)
-- [任务模拟](#bus-fake)
-- [事件模拟](#event-fake)
-- [邮件模拟](#mail-fake)
-- [通知模拟](#notification-fake)
-- [队列模拟](#queue-fake)
-- [Storage 模拟](#storage-fake)
-- [Facades 模拟](#mocking-facades)
-
 
 ## 介绍
 
@@ -88,7 +79,7 @@ Laravel 针对事件、任务和 facades 的模拟提供了开箱即用的辅助
 
 ## 邮件模拟
 
-你可以使用 `Mail` facade 的 `fake` 方法来模拟邮件发送，测试时不会真的发送邮件。然后你可以断言 [mailables](/docs/{{version}}/mail) 发送给了用户，甚至可以检查他们收到的数据. 使用 fakes 时，断言一般在测试代码的后面：
+你可以使用 `Mail` facade 的 `fake` 方法来模拟邮件发送，测试时不会真的发送邮件。然后你可以断言 [mailables](/docs/laravel/mail) 发送给了用户，甚至可以检查他们收到的数据. 使用 fakes 时，断言一般在测试代码的后面：
 
     <?php
 
@@ -136,7 +127,7 @@ Laravel 针对事件、任务和 facades 的模拟提供了开箱即用的辅助
 
 ## 通知模拟
 
-你可以使用 `Notification` facade 的 `fake` 方法来模拟通知发送，测试的时候并不会真的发送通知。然后你可以断言 [通知](/docs/{{version}}/notifications) 已经发送给你的用户，甚至可以检查他们收到的数据。使用 fakes 时, 断言一般出现在测试代码的后面.
+你可以使用 `Notification` facade 的 `fake` 方法来模拟通知发送，测试的时候并不会真的发送通知。然后你可以断言 通知 已经发送给你的用户，甚至可以检查他们收到的数据。使用 fakes 时, 断言一般出现在测试代码的后面.
 
     <?php
 
@@ -253,7 +244,7 @@ Laravel 针对事件、任务和 facades 的模拟提供了开箱即用的辅助
 
 ## Facades 模拟
 
-不同于传统的静态函数的调用， [facades](/docs/{{version}}/facades) 也是可以被模拟的，相对静态函数来说这是个巨大的优势，即使你在使用依赖注入，测试时依然会非常方便。在很多测试中，你可能经常想在控制器中模拟对 Laravel facade 的调用。比如下面控制器中的行为：
+不同于传统的静态函数的调用， [facades](/docs/laravel/facades) 也是可以被模拟的，相对静态函数来说这是个巨大的优势，即使你在使用依赖注入，测试时依然会非常方便。在很多测试中，你可能经常想在控制器中模拟对 Laravel facade 的调用。比如下面控制器中的行为：
 
     <?php
 
@@ -276,7 +267,7 @@ Laravel 针对事件、任务和 facades 的模拟提供了开箱即用的辅助
         }
     }
 
-我们可以通过 `shouldReceive` 方法来模拟 `Cache` facade ，此函数会返回一个 [Mockery](https://github.com/padraic/mockery) 实例，由于对 facade 的调用实际上都是由 Laravel 的 [服务容器](/docs/{{version}}/container) 管理的，所以 facade 能比传统的静态类表现出更好的测试便利性。接下来，让我们来模拟一下 `Cache` facade 的 `get` 方法的调用：
+我们可以通过 `shouldReceive` 方法来模拟 `Cache` facade ，此函数会返回一个 [Mockery](https://github.com/padraic/mockery) 实例，由于对 facade 的调用实际上都是由 Laravel 的 [服务容器](/docs/laravel/container) 管理的，所以 facade 能比传统的静态类表现出更好的测试便利性。接下来，让我们来模拟一下 `Cache` facade 的 `get` 方法的调用：
 
     <?php
 

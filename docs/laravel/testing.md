@@ -1,9 +1,5 @@
 # Laravel 测试: 入门指南
 
-- [简介](#introduction)
-- [测试环境](#environment)
-- [定义并运行测试](#creating-and-running-tests)
-
 
 ## 简介
 

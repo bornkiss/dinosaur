@@ -1,25 +1,4 @@
 # Eloquent: 入门
-- [简介](#introduction)
-- [定义模型](#defining-models)
-    - [Eloquent 模型约定](#eloquent-model-conventions)
-- [检索多个模型](#retrieving-models)
-    - [集合](#collections)
-    - [分块结果](#chunking-results)
-- [检索单个模型或集合](#retrieving-single-models)
-    - [检索集合](#retrieving-aggregates)
-- [插入 & 更新模型](#inserting-and-updating-models)
-    - [插入](#inserts)
-    - [更新](#updates)
-    - [批量赋值](#mass-assignment)
-    - [其他创建方法](#other-creation-methods)
-- [删除模型](#deleting-models)
-    - [软删除](#soft-deleting)
-    - [查询被软删除的模型](#querying-soft-deleted-models)
-- [查询作用域](#query-scopes)
-    - [全局作用域](#global-scopes)
-    - [本地作用域](#local-scopes)
-- [事件](#events)
-    - [观察器](#observers)
 
 
 
@@ -28,18 +7,18 @@
 
 Laravel 的 Eloquent ORM 提供了漂亮、简洁的 ActiveRecord 实现来和数据库交互。每个数据库表都有一个对应的「模型」用来与该表交互。你可以通过模型查询数据表中的数据，并将新记录添加到数据表中。
 
-在开始之前，请确保在 `config/database.php` 中配置数据库连接。更多关于数据库的配置信息，请查看 [文档](/docs/{{version}}/database#configuration)。
+在开始之前，请确保在 `config/database.php` 中配置数据库连接。更多关于数据库的配置信息，请查看 [文档](/docs/laravel/database#configuration)。
 
 
 ## 定义模型
 
 首先，创建一个 Eloquent 模型，生成的模型通常放在 `app` 目录中，但你可以通过 `composer.json` 随意地将它们放在可被自动加载的地方。所有的 Eloquent 模型都继承了 `Illuminate\Database\Eloquent\Model` 类。
 
-创建模型实例的最简单方法是使用 [Artisan 命令](/docs/{{version}}/artisan) `make:model`：
+创建模型实例的最简单方法是使用 [Artisan 命令](/docs/laravel/artisan) `make:model`：
 
     php artisan make:model User
 
-如果要在生成模型时生成 [数据库迁移](/docs/{{version}}/migrations)，可以使用 `--migration` 或 `-m` 选项：
+如果要在生成模型时生成 [数据库迁移](/docs/laravel/migrations)，可以使用 `--migration` 或 `-m` 选项：
 
     php artisan make:model User --migration
 
@@ -161,7 +140,7 @@ Eloquent 也会假定每个数据表都有一个名为 `id` 的主键字段。�
 
 ## 检索多个模型
 
-创建完模型 [及其关联的数据表](/docs/{{version}}/schema) 之后，就可以开始从数据库中检索数据。可把每个 Eloquent 模型想像成强大的 [查询构造器](/docs/{{version}}/queries)，它让你可以流畅地查询与该模型相关联的数据库表。例如：
+创建完模型 及其关联的数据表 之后，就可以开始从数据库中检索数据。可把每个 Eloquent 模型想像成强大的 [查询构造器](/docs/laravel/queries)，它让你可以流畅地查询与该模型相关联的数据库表。例如：
 
 
     <?php
@@ -176,19 +155,19 @@ Eloquent 也会假定每个数据表都有一个名为 `id` 的主键字段。�
 
 #### 添加其他约束
 
-Eloquent 的 `all` 方法会返回模型表中所有的结果。由于每个 Eloquent 模型都可以当作一个 [查询构造器](/docs/{{version}}/queries)，因此你还可以在查询中添加约束，然后使用 `get` 方法来获取结果：
+Eloquent 的 `all` 方法会返回模型表中所有的结果。由于每个 Eloquent 模型都可以当作一个 [查询构造器](/docs/laravel/queries)，因此你还可以在查询中添加约束，然后使用 `get` 方法来获取结果：
 
     $flights = App\Flight::where('active', 1)
                    ->orderBy('name', 'desc')
                    ->take(10)
                    ->get();
 
-> {tip} Eloquent 模型是查询构造器，因此你应当去阅读 [查询构造器](/docs/{{version}}/queries) 提供的所有方法，以便你可以在 Eloquent 查询中使用。
+> {tip} Eloquent 模型是查询构造器，因此你应当去阅读 [查询构造器](/docs/laravel/queries) 提供的所有方法，以便你可以在 Eloquent 查询中使用。
 
 
 ### 集合
 
-使用 Eloquent 中的方法比如 `all` 和 `get` 可以检索多个结果，并且会返回一个 `Illuminate\Database\Eloquent\Collection` 实例。`Collection` 类提供了 [很多辅助函数](/docs/{{version}}/eloquent-collections#available-methods) 来处理Eloquent 结果。
+使用 Eloquent 中的方法比如 `all` 和 `get` 可以检索多个结果，并且会返回一个 `Illuminate\Database\Eloquent\Collection` 实例。`Collection` 类提供了 [很多辅助函数](/docs/laravel/eloquent-collections#available-methods) 来处理Eloquent 结果。
 
 
     $flights = $flights->reject(function ($flight) {
@@ -257,7 +236,7 @@ Eloquent 的 `all` 方法会返回模型表中所有的结果。由于每个 Elo
 
 ### 检索集合
 
-你还可以使用 [查询构造器](/docs/{{version}}/queries) 提供的 `count`、`sum`、`max` 以及其它 [聚合函数](/docs/{{version}}/queries#aggregates)。这些方法只会返回适当的标量值而不是整个模型实例：
+你还可以使用 [查询构造器](/docs/laravel/queries) 提供的 `count`、`sum`、`max` 以及其它 [聚合函数](/docs/laravel/queries#aggregates)。这些方法只会返回适当的标量值而不是整个模型实例：
 
     $count = App\Flight::where('active', 1)->count();
 
@@ -476,7 +455,7 @@ $flight->fill(['name' => 'Flight 22']);
         protected $dates = ['deleted_at'];
     }
 
-你也应该添加 `deleted_at` 字段到数据表中。Laravel [结构生成器](/docs/{{version}}/migrations) 包含了一个辅助函数用来创建此字段：
+你也应该添加 `deleted_at` 字段到数据表中。Laravel [结构生成器](/docs/laravel/migrations) 包含了一个辅助函数用来创建此字段：
 
     Schema::table('flights', function ($table) {
         $table->softDeletes();
@@ -502,7 +481,7 @@ $flight->fill(['name' => 'Flight 22']);
                     ->where('account_id', 1)
                     ->get();
 
-`withTrashed` 方法也可用于 [关联](/docs/{{version}}/eloquent-relationships) 查询：
+`withTrashed` 方法也可用于 [关联](/docs/laravel/eloquent-relationships) 查询：
 
     $flight->history()->withTrashed()->get();
 
@@ -526,7 +505,7 @@ $flight->fill(['name' => 'Flight 22']);
             ->where('airline_id', 1)
             ->restore();
 
-与 `withTrashed` 方法类似，`restore` 方法也可以被用在 [关联](/docs/{{version}}/eloquent-relationships) 查询上:
+与 `withTrashed` 方法类似，`restore` 方法也可以被用在 [关联](/docs/laravel/eloquent-relationships) 查询上:
 
     $flight->history()->restore();
 
@@ -731,7 +710,7 @@ Eloquent 的模型触发了几个事件，可以在模型的生命周期的以�
 
 从数据库中检索现有模型时会触发 `retrieved` 事件。当新模型第一次被保存时， `creating` 以及 `created` 事件会被触发。如果模型已经存在于数据库中并且调用了 `save` 方法，会触发 `updating` 和 `updated` 事件。在这两种情况下，`saving` / `saved` 事件都会触发。
 
-开始前，在 Eloquent 模型上定义一个 `$dispatchesEvents` 属性，将 Eloquent 模型的生命周期的各个点映射到你的 [事件类](/docs/{{version}}/events) 中。
+开始前，在 Eloquent 模型上定义一个 `$dispatchesEvents` 属性，将 Eloquent 模型的生命周期的各个点映射到你的 [事件类](/docs/laravel/events) 中。
 
 
     <?php

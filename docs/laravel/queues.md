@@ -1,32 +1,9 @@
-# Laravel 的队列系统介绍
-
-- [简介](#introduction)
-    - [连接 Vs. 队列](#connections-vs-queues)
-    - [驱动的必要设置](#driver-prerequisites)
-- [创建任务类](#creating-jobs)
-    - [生成任务类](#generating-job-classes)
-    - [任务类结构](#class-structure)
-- [分发任务](#dispatching-jobs)
-    - [延迟分发](#delayed-dispatching)
-    - [工作链](#job-chaining)
-    - [自定义队列 & 连接](#customizing-the-queue-and-connection)
-    - [指定任务最大尝试次数 / 超时值](#max-job-attempts-and-timeout)
-    - [错误处理](#error-handling)
-- [运行队列处理器](#running-the-queue-worker)
-    - [队列优先级](#queue-priorities)
-    - [队列处理器 & 部署](#queue-workers-and-deployment)
-    - [任务过期 & 超时](#job-expirations-and-timeouts)
-- [Supervisor 配置](#supervisor-configuration)
-- [处理失败的任务](#dealing-with-failed-jobs)
-    - [清除失败任务](#cleaning-up-after-failed-jobs)
-    - [任务失败事件](#failed-job-events)
-    - [重试失败的任务](#retrying-failed-jobs)
-- [任务事件](#job-events)
+# 队列系统介绍
 
 
 ## 简介
 
-> {tip} Laravel 现在为你的 Redis 队列 提供了 Horizon，一个漂亮的仪表盘和配置系统。查看完整的 [Horizon 文档](/docs/{{version}}/horizon) 了解更多信息。
+> {tip} Laravel 现在为你的 Redis 队列 提供了 Horizon，一个漂亮的仪表盘和配置系统。查看完整的 [Horizon 文档](/docs/laravel/horizon) 了解更多信息。
 
 Laravel 队列为不同的后台队列服务提供统一的 API，例如 Beanstalk，Amazon SQS，Redis，甚至其他基于关系型数据库的队列。队列的目的是将耗时的任务延时处理，比如发送邮件，从而大幅度缩短 Web 请求和相应的时间。
 
@@ -141,9 +118,9 @@ Laravel 队列为不同的后台队列服务提供统一的 API，例如 Beansta
         }
     }
 
-注意，在这个例子中，我们在任务类的构造器中直接传递了一个 [Eloquent 模型](/docs/{{version}}/eloquent)。因为我们在任务类里引用了 `SerializesModels` 这个 trait，使得 Eloquent 模型在处理任务时可以被优雅地序列化和反序列化。如果你的队列任务类在构造器中接收了一个 Eloquent 模型，那么只有可识别出该模型的属性会被序列化到队列里。当任务被实际运行时，队列系统便会自动从数据库中重新取回完整的模型。这整个过程对你的应用程序来说是完全透明的，这样可以避免在序列化完整的 Eloquent 模式实例时所带来的一些问题。
+注意，在这个例子中，我们在任务类的构造器中直接传递了一个 [Eloquent 模型](/docs/laravel/eloquent)。因为我们在任务类里引用了 `SerializesModels` 这个 trait，使得 Eloquent 模型在处理任务时可以被优雅地序列化和反序列化。如果你的队列任务类在构造器中接收了一个 Eloquent 模型，那么只有可识别出该模型的属性会被序列化到队列里。当任务被实际运行时，队列系统便会自动从数据库中重新取回完整的模型。这整个过程对你的应用程序来说是完全透明的，这样可以避免在序列化完整的 Eloquent 模式实例时所带来的一些问题。
 
-在队列处理任务时，会调用 `handle` 方法，而这里我们也可以通过 `handle` 方法的参数类型提示，让 Laravel 的 [服务容器](/docs/{{version}}/container) 自动注入依赖对象。
+在队列处理任务时，会调用 `handle` 方法，而这里我们也可以通过 `handle` 方法的参数类型提示，让 Laravel 的 [服务容器](/docs/laravel/container) 自动注入依赖对象。
 
 > {note} 像图片内容这种二进制数据，在放入队列任务之前必须使用 `base64_encode` 方法转换一下。否则，当这项任务放置到队列中时，可能无法正确序列化为 JSON。
 
@@ -389,7 +366,7 @@ Laravel 包含一个队列处理器，当新任务被推到队列中时它能处
 
 这个命令将会告诉所有队列处理器在执行完当前任务后结束进程，这样才不会有任务丢失。因为队列处理器在执行 `queue:restart` 命令时对结束进程，你应该运行一个进程管理器，比如 [Supervisor](#supervisor-configuration) 来自动重新启动队列处理器。
 
-> {tip} 队列使用 [缓存](/docs/{{version}}/cache) 来存储重新启动信号，所以在使用此功能之前，你应该确保应用程序的缓存驱动程序已正确配置。
+> {tip} 队列使用 [缓存](/docs/laravel/cache) 来存储重新启动信号，所以在使用此功能之前，你应该确保应用程序的缓存驱动程序已正确配置。
 
 
 ### 任务过期 & 超时
@@ -591,7 +568,7 @@ Supervisor 的配置文件一般是放在 `/etc/supervisor/conf.d` 目录下。�
 
 ## 任务事件
 
-使用队列的 `before` 和 `after` 方法，你能指定任务处理前和处理后的回调处理。在这些回调里正是实现额外的日志记录或者增加统计数据的好时机。通常情况下，你应该在 [服务容器](/docs/{{version}}/providers) 中调用这些方法。例如，我们使用 Laravel 中的 `AppServiceProvider`：
+使用队列的 `before` 和 `after` 方法，你能指定任务处理前和处理后的回调处理。在这些回调里正是实现额外的日志记录或者增加统计数据的好时机。通常情况下，你应该在 [服务容器](/docs/laravel/providers) 中调用这些方法。例如，我们使用 Laravel 中的 `AppServiceProvider`：
 
     <?php
 
@@ -635,7 +612,7 @@ Supervisor 的配置文件一般是放在 `/etc/supervisor/conf.d` 目录下。�
         }
     }
 
-在 `队列` [facade](/docs/{{version}}/facades) 中使用 `looping` 方法，你可以尝试在队列获取任务之前执行指定的回调方法。举个例子，你可以用闭包来回滚之前已失败任务的事务。
+在 `队列` [facade](/docs/laravel/facades) 中使用 `looping` 方法，你可以尝试在队列获取任务之前执行指定的回调方法。举个例子，你可以用闭包来回滚之前已失败任务的事务。
 
     Queue::looping(function () {
         while (DB::transactionLevel() > 0) {

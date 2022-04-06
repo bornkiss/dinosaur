@@ -1,13 +1,4 @@
-# Laravel 的 社会化登录功能
-
-- [简介](#introduction)
-- [授权](#license)
-- [官方文档](#official-documentation)
-- [配置](#configuration)
-- [基本用法](#basic-usage)
-    - [无状态身份验证](#stateless-authentication)
-    - [检索用户详细信息](#retrieving-user-details)
-    - [从令牌检索用户详细信息](#retrieving-user-details-from-token)
+#  社会化登录功能
 
 
 ## 简介

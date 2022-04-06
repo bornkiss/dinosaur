@@ -1,26 +1,8 @@
-# Laravel 的用户授权系统
-
-- [简介](#introduction)
-- [Gates](#gates)
-    - [编写 Gates](#writing-gates)
-    - [授权动作](#authorizing-actions-via-gates)
-- [创建策略](#creating-policies)
-    - [生成策略](#generating-policies)
-    - [注册策略](#registering-policies)
-- [编写策略](#writing-policies)
-    - [策略方法](#policy-methods)
-    - [不使用模型方法](#methods-without-models)
-    - [策略过滤器](#policy-filters)
-- [使用策略授权动作](#authorizing-actions-using-policies)
-    - [通过用户模型](#via-the-user-model)
-    - [通过中间件](#via-middleware)
-    - [通过控制器辅助函数](#via-controller-helpers)
-    - [通过 Blade 模板](#via-blade-templates)
-
+# 用户授权系统
 
 ## 简介
 
-除了内置开箱即用的 [用户认证](/docs/{{version}}/authentication) 服务外，Laravel 还提供一种更简单的方式来处理用户授权动作。类似用户认证，Laravel 有 2 种主要方式来实现用户授权：gates 和策略。
+除了内置开箱即用的 [用户认证](/docs/laravel/authentication) 服务外，Laravel 还提供一种更简单的方式来处理用户授权动作。类似用户认证，Laravel 有 2 种主要方式来实现用户授权：gates 和策略。
 
 可以把 gates 和策略类比于路由和控制器。 Gates 提供了一个简单的、基于闭包的方式来授权认证。策略则和控制器类似，在特定的模型或者资源中通过分组来实现授权认证的逻辑。我们先来看看 gates，然后再看策略。
 
@@ -116,7 +98,7 @@ Gates 也可以使用 `Class@method` 风格的回调字符串来定义，比如�
 
 策略是在特定模型或者资源中组织授权逻辑的类。例如，如果你的应用是一个博客，会有一个 `Post` 模型和一个相应的 `PostPolicy` 来授权用户动作，比如创建或者更新博客。
 
-可以使用 `make:policy` [artisan 命令](/docs/{{version}}/artisan) 来生成策略。生成的策略将放置在 `app/Policies` 目录。如果在你的应用中不存在这个目录，那么 Laravel 会自动创建：
+可以使用 `make:policy` [artisan 命令](/docs/laravel/artisan) 来生成策略。生成的策略将放置在 `app/Policies` 目录。如果在你的应用中不存在这个目录，那么 Laravel 会自动创建：
 
     php artisan make:policy PostPolicy
 
@@ -124,7 +106,7 @@ Gates 也可以使用 `Class@method` 风格的回调字符串来定义，比如�
 
     php artisan make:policy PostPolicy --model=Post
 
-> {tip} 所有授权策略会通过 Laravel [服务容器](/docs/{{version}}/container) 解析，意指你可以在授权策略的构造器对任何需要的依赖使用类型提示，它们将会被自动注入。
+> {tip} 所有授权策略会通过 Laravel [服务容器](/docs/laravel/container) 解析，意指你可以在授权策略的构造器对任何需要的依赖使用类型提示，它们将会被自动注入。
 
 
 ### 注册策略
@@ -267,7 +249,7 @@ Laravel 包含一个可以在请求到达路由或控制器之前就进行动作
         // 当前用户可以更新博客...
     })->middleware('can:update,post');
 
-在这个例子中，我们传递给 `can` 中间件 2 个参数。第一个是需要授权的动作的名称，第二个是我们希望传递给策略方法的路由参数。这里因为使用了 [隐式模型绑定](/docs/{{version}}/routing#implicit-binding)，一个 `Post` 会被传递给策略方法。如果用户不被授权访问指定的动作，这个中间件会生成带有 `403` 状态码的 HTTP 响应。
+在这个例子中，我们传递给 `can` 中间件 2 个参数。第一个是需要授权的动作的名称，第二个是我们希望传递给策略方法的路由参数。这里因为使用了 [隐式模型绑定](/docs/laravel/routing#implicit-binding)，一个 `Post` 会被传递给策略方法。如果用户不被授权访问指定的动作，这个中间件会生成带有 `403` 状态码的 HTTP 响应。
 
 #### 不需要指定模型的动作
 

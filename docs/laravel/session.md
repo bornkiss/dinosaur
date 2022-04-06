@@ -1,17 +1,4 @@
-# Laravel 的 HTTP 会话机制
-
-- [简介](#introduction)
-    - [配置](#configuration)
-    - [驱动之前](#driver-prerequisites)
-- [使用 Session](#using-the-session)
-    - [获取数据](#retrieving-data)
-    - [存储数据](#storing-data)
-    - [闪存数据](#flash-data)
-    - [删除数据](#deleting-data)
-    - [重新生成 Session ID](#regenerating-the-session-id)
-- [添加自定义 Session 驱动](#adding-custom-session-drivers)
-    - [实现驱动](#implementing-the-driver)
-    - [注册驱动](#registering-the-driver)
+#  HTTP 会话机制
 
 
 ## 简介
@@ -36,7 +23,7 @@ Session `driver` 的配置选项定义了每个请求存储 Session 数据的位
 - `array` - Sessions 保存在 PHP 数组中，不会被持久化。
 
 
-> {tip} 数组驱动一般用于 [测试](/docs/{{version}}/testing)，并防止存储在 Session 中的数据被持久化。
+> {tip} 数组驱动一般用于 [测试](/docs/laravel/testing)，并防止存储在 Session 中的数据被持久化。
 
 
 ### 驱动之前
@@ -70,7 +57,7 @@ Laravel 在使用 Redis 作为 Session 驱动之前，需要通过 Composer 安�
 
 ### 获取数据
 
-Laravel 中处理 Session 数据有两种主要方法：全局辅助函数 `session` 和通过一个 `Request` 实例。首先，我们来看看通过控制器方法类型提示一个 `Request` 实例来访问 session。控制器方法依赖项会通过 Laravel [服务容器](/docs/{{version}}/container) 自动注入：
+Laravel 中处理 Session 数据有两种主要方法：全局辅助函数 `session` 和通过一个 `Request` 实例。首先，我们来看看通过控制器方法类型提示一个 `Request` 实例来访问 session。控制器方法依赖项会通过 Laravel [服务容器](/docs/laravel/container) 自动注入：
 
     <?php
 
@@ -119,7 +106,7 @@ Laravel 中处理 Session 数据有两种主要方法：全局辅助函数 `sess
         session(['key' => 'value']);
     });
 
-> {tip} 通过 HTTP 请求实例操作 Session 与使用全局辅助函数 `session` 两者之间并没有实质上的区别。这两种方法都可以通过所有测试用例中可用的 `assertSessionHas` 方法进行 [测试](/docs/{{version}}/testing)。
+> {tip} 通过 HTTP 请求实例操作 Session 与使用全局辅助函数 `session` 两者之间并没有实质上的区别。这两种方法都可以通过所有测试用例中可用的 `assertSessionHas` 方法进行 [测试](/docs/laravel/testing)。
 
 #### 获取所有 Session 数据
 
@@ -233,7 +220,7 @@ Laravel 中处理 Session 数据有两种主要方法：全局辅助函数 `sess
 
 #### 注册驱动
 
-你的 Session 驱动实现之后，你还需要在框架中注册该驱动，即将该扩展驱动添加到 Laravel Session 后台。然后在 [服务提供者](/docs/{{version}}/providers) 的 `boot` 方法内调用 `Session` Facade 的 `extend` 方法。之后你就可以从现有的 `AppServiceProvider` 或者新创建的提供器中执行此操作。
+你的 Session 驱动实现之后，你还需要在框架中注册该驱动，即将该扩展驱动添加到 Laravel Session 后台。然后在 [服务提供者](/docs/laravel/providers) 的 `boot` 方法内调用 `Session` Facade 的 `extend` 方法。之后你就可以从现有的 `AppServiceProvider` 或者新创建的提供器中执行此操作。
 
     <?php
 

@@ -1,13 +1,4 @@
-# Laravel 的配置信息
-
-- [介绍](#introduction)
-- [环境配置](#environment-configuration)
-    - [检索环境配置](#retrieving-environment-configuration)
-    - [确定当前环境](#determining-the-current-environment)
-- [访问配置值](#accessing-configuration-values)
-- [配置缓存](#configuration-caching)
-- [维护模式](#maintenance-mode)
-
+# 配置信息
 
 ## 介绍
 
@@ -38,7 +29,7 @@ Laravel 利用 Vance Lucas 的 PHP 库 [DotEnv](https://github.com/vlucas/phpdot
 
 ### 确定当前环境
 
-应用程序当前所处环境是通过 `.env` 文件中的 `APP_ENV` 变量确定的。你可以通过 `App` [facade](/docs/{{version}}/facades) 中的 `environment`  方法来访问此值：
+应用程序当前所处环境是通过 `.env` 文件中的 `APP_ENV` 变量确定的。你可以通过 `App` [facade](/docs/laravel/facades) 中的 `environment`  方法来访问此值：
 
     $environment = App::environment();
 
@@ -95,7 +86,7 @@ Laravel 利用 Vance Lucas 的 PHP 库 [DotEnv](https://github.com/vlucas/phpdot
 
 #### 维护模式和队列
 
-当应用程序处于维护模式时，不会处理 [队列任务](/docs/{{version}}/queues)。而这些任务会在应用程序退出维护模式后再继续处理。
+当应用程序处于维护模式时，不会处理 [队列任务](/docs/laravel/queues)。而这些任务会在应用程序退出维护模式后再继续处理。
 
 #### 维护模式的替代方案
 

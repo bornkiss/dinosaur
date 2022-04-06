@@ -1,14 +1,4 @@
-# Laravel 的路由中间件
-
-- [简介](#introduction)
-- [定义中间件](#defining-middleware)
-- [注册中间件](#registering-middleware)
-    - [全局中间件](#global-middleware)
-    - [为路由分配中间件](#assigning-middleware-to-routes)
-    - [中间件组](#middleware-groups)
-- [中间件参数](#middleware-parameters)
-- [Terminable 中间件](#terminable-middleware)
-
+# 路由中间件
 
 ## 简介
 
@@ -249,7 +239,7 @@ Laravel 自带的 `web` 和 `api` 中间件组包含了你可能会应用到 Web
 
 `terminate` 方法应该同时接收和响应。一旦定义了这个中间件，你应该将它添加到路由列表或 `app/Http/Kernel.php` 文件的全局中间件中。
 
-在你的中间件上调用 `terminate` 调用时，Laravel 会从 [服务容器](/docs/{{version}}/container) 中解析出一个新的中间件实例。如果要在调用 `handle` 和 `terminate` 方法时使用同一个中间件实例，就使用容器的 `singleton` 方法向容器注册中间件。
+在你的中间件上调用 `terminate` 调用时，Laravel 会从 [服务容器](/docs/laravel/container) 中解析出一个新的中间件实例。如果要在调用 `handle` 和 `terminate` 方法时使用同一个中间件实例，就使用容器的 `singleton` 方法向容器注册中间件。
 
 
 ## 译者署名

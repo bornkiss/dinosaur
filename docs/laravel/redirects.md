@@ -1,10 +1,4 @@
-# Laravel 的 HTTP 重定向 Redirect
-
-- [创建重定向](#creating-redirects)
-- [重定向到命名路由](#redirecting-named-routes)
-- [重定向到控制器动作](#redirecting-controller-actions)
-- [闪存 Session 数据重定向](#redirecting-with-flashed-session-data)
-
+#  HTTP 重定向 Redirect
 
 ## 创建重定向
 
@@ -14,7 +8,7 @@
         return redirect('home/dashboard');
     });
 
-有时候你希望将用户重定向到他们的上一个访问位置，例如当提交的表单不合法时，你就可以通过全局的 `back` 辅助函数来这样做。 因为该特性使用了 [session](/docs/{{version}}/session)，请确保路由调用 `back` 函数时使用了 `web` 中间件组或者应用了全部的 session 中间件：
+有时候你希望将用户重定向到他们的上一个访问位置，例如当提交的表单不合法时，你就可以通过全局的 `back` 辅助函数来这样做。 因为该特性使用了 [session](/docs/laravel/session)，请确保路由调用 `back` 函数时使用了 `web` 中间件组或者应用了全部的 session 中间件：
 
     Route::post('user/profile', function () {
         // Validate the request...
@@ -58,7 +52,7 @@
 
 ## 重定向到控制器动作
 
-你也可以生成重定向到 [控制器动作](/docs/{{version}}/controllers)。要达到这个目的，传递控制器名和动作名到 `action` 方法即可。记住，你不需要指定完整的控制器命名空间，因为 Laravel 的 `RouteServiceProvider` 会自动设置基础的控制器命名空间：
+你也可以生成重定向到 [控制器动作](/docs/laravel/controllers)。要达到这个目的，传递控制器名和动作名到 `action` 方法即可。记住，你不需要指定完整的控制器命名空间，因为 Laravel 的 `RouteServiceProvider` 会自动设置基础的控制器命名空间：
 
     return redirect()->action('HomeController@index');
 
@@ -71,7 +65,7 @@
 
 ## 闪存 Session 数据重定向
 
-重定向到新的 URL 并且 [闪存数据到 session](/docs/{{version}}/session#flash-data) 常常在同时完成。 通常的，这会在你成功的执行一个动作、闪存消息到 session 后完成。方便起见，你可以创建一个 `RedirectResponse` 实例并在单个的、流畅的方法链上闪存数据到 session ：
+重定向到新的 URL 并且 [闪存数据到 session](/docs/laravel/session#flash-data) 常常在同时完成。 通常的，这会在你成功的执行一个动作、闪存消息到 session 后完成。方便起见，你可以创建一个 `RedirectResponse` 实例并在单个的、流畅的方法链上闪存数据到 session ：
 
     Route::post('user/profile', function () {
         // Update the user's profile...
@@ -79,7 +73,7 @@
         return redirect('dashboard')->with('status', 'Profile updated!');
     });
 
-用户被重定向后，你可以从 [session](/docs/{{version}}/session) 中显示闪存消息。例如，使用 [Blade 语法](/docs/{{version}}/blade):
+用户被重定向后，你可以从 [session](/docs/laravel/session) 中显示闪存消息。例如，使用 [Blade 语法](/docs/laravel/blade):
 
     @if (session('status'))
         <div class="alert alert-success">

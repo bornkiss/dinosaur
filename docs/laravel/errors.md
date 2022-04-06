@@ -1,26 +1,4 @@
-# Laravel 的错误和日志记录
-
-- [Laravel 的错误和日志记录](#laravel-的错误和日志记录)
-  - [简介](#简介)
-  - [配置](#配置)
-    - [错误的详细信息](#错误的详细信息)
-    - [日志存储](#日志存储)
-      - [最大日志文件数](#最大日志文件数)
-    - [日志严重程度级别](#日志严重程度级别)
-    - [自定义 Monolog 配置](#自定义-monolog-配置)
-      - [自定义渠道名称](#自定义渠道名称)
-  - [异常处理](#异常处理)
-    - [Report 方法](#report-方法)
-      - [辅助函数 `report`](#辅助函数-report)
-      - [按类型忽略异常](#按类型忽略异常)
-    - [Render 方法](#render-方法)
-    - [自定义异常的 report & render 方法](#自定义异常的-report--render-方法)
-  - [HTTP 异常](#http-异常)
-    - [自定义 HTTP 错误页面](#自定义-http-错误页面)
-  - [日志](#日志)
-      - [上下文信息](#上下文信息)
-      - [访问底层的 Monolog 实例](#访问底层的-monolog-实例)
-  - [译者署名](#译者署名)
+# 错误和日志记录
 
 
 ## 简介
@@ -219,7 +197,7 @@ Laravel 可以轻松地显示各种 HTTP 状态代码的自定义错误页面。
 
 ## 日志
 
-Laravel 在强大的 [Monolog](https://github.com/seldaek/monolog) 库上提供了一个简单的抽象层。默认情况下，Laravel 的日志文件的存储目录被配置为 `storage/logs` 。你可以使用 `Log` [facade](/docs/{{version}}/facades) 将信息写入日志：
+Laravel 在强大的 [Monolog](https://github.com/seldaek/monolog) 库上提供了一个简单的抽象层。默认情况下，Laravel 的日志文件的存储目录被配置为 `storage/logs` 。你可以使用 `Log` [facade](/docs/laravel/facades) 将信息写入日志：
 
     <?php
 

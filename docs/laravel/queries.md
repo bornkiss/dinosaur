@@ -1,26 +1,5 @@
 # Laravel 数据库之：数据库请求构建器
 
-- [简介](#introduction)
-- [获取结果](#retrieving-results)
-    - [分块结果](#chunking-results)
-    - [聚合](#aggregates)
-- [Selects](#selects)
-- [原生表达式](#raw-expressions)
-- [Joins](#joins)
-- [Unions](#unions)
-- [Where 语句](#where-clauses)
-    - [参数分组](#parameter-grouping)
-    - [Where Exists 语法](#where-exists-clauses)
-    - [JSON 查询语句](#json-where-clauses)
-- [Ordering, Grouping, Limit, & Offset](#ordering-grouping-limit-and-offset)
-- [条件语句](#conditional-clauses)
-- [Inserts](#inserts)
-- [Updates](#updates)
-    - [更新 JSON](#updating-json-columns)
-    - [自增 & 自减](#increment-and-decrement)
-- [Deletes](#deletes)
-- [悲观锁](#pessimistic-locking)
-
 
 ## 简介
 
@@ -96,7 +75,7 @@ Laravel 的查询构造器使用 PDO 参数绑定来保护你的应用程序免�
 
 ### 结果分块
 
-如果你需要操作数千条数据库记录，可以考虑使用 `chunk` 方法。这个方法每次只取出一小块结果传递给 `闭包` 处理，这对于编写数千条记录的 [Artisan 命令](/docs/{{version}}/artisan) 而言是非常有用的。例如，一次处理整个 `users` 表中的 100 个记录：
+如果你需要操作数千条数据库记录，可以考虑使用 `chunk` 方法。这个方法每次只取出一小块结果传递给 `闭包` 处理，这对于编写数千条记录的 [Artisan 命令](/docs/laravel/artisan) 而言是非常有用的。例如，一次处理整个 `users` 表中的 100 个记录：
 
     DB::table('users')->orderBy('id')->chunk(100, function ($users) {
         foreach ($users as $user) {

@@ -1,9 +1,5 @@
 # Laravel 发行说明
 
-- [版本控制方案](#versioning-scheme)
-- [支持策略](#support-policy)
-- [Laravel 5.5](#laravel-5.5)
-
 
 ## 版本控制方案
 
@@ -42,7 +38,7 @@ Horizon 为你的 Laravel Redis 队列提供了一个漂亮的仪表版和代码
 
 所有的配置都存放一个简单的配置文件中，让你的整个团队可以协同工作。
 
-更多关于 Horizon 的信息，请查看 [完整的 Horizon 文档](/docs/{{version}}/horizon)。
+更多关于 Horizon 的信息，请查看 [完整的 Horizon 文档](/docs/laravel/horizon)。
 
 ### 包自动发现
 
@@ -62,7 +58,7 @@ Horizon 为你的 Laravel Redis 队列提供了一个漂亮的仪表版和代码
         }
     },
 
-更多信息，请查看详细文档 [包开发](/docs/{{version}}/packages).
+更多信息，请查看详细文档 [包开发](/docs/laravel/packages).
 
 ### API 资源
 
@@ -96,7 +92,7 @@ class User extends Resource
 }
 ````
 
-当然这只是 API 资源的最基本的例子。 Laravel 还提供各种方法来帮助你构建资源和资源集合。有关更多信息，请查看有关 API 资源的 [完整文档](/docs/{{version}}/eloquent-resources)。
+当然这只是 API 资源的最基本的例子。 Laravel 还提供各种方法来帮助你构建资源和资源集合。有关更多信息，请查看有关 API 资源的 [完整文档](/docs/laravel/eloquent-resources)。
 
 ### 控制台命令自动注册
 

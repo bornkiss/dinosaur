@@ -1,25 +1,4 @@
-# Laravel 的用户认证系统
-
-- [简介](#introduction)
-    - [数据库注意事项](#introduction-database-considerations)
-- [快速认证](#authentication-quickstart)
-    - [路由](#included-routing)
-    - [视图](#included-views)
-    - [认证](#included-authenticating)
-    - [检索认证用户](#retrieving-the-authenticated-user)
-    - [保护路由](#protecting-routes)
-    - [登录限制](#login-throttling)
-- [手动认证用户](#authenticating-users)
-    - [记住用户](#remembering-users)
-    - [其它认证方法](#other-authentication-methods)
-- [HTTP 基础认证](#http-basic-authentication)
-    - [无状态 HTTP 基础认证](#stateless-http-basic-authentication)
-- [社交认证](https://github.com/laravel/socialite)
-- [增加自定义看守器](#adding-custom-guards)
-- [增加自定义用户提供器](#adding-custom-user-providers)
-    - [用户提供器契约](#the-user-provider-contract)
-    - [认证契约](#the-authenticatable-contract)
-- [事件](#events)
+# 用户认证系统
 
 
 ## 简介
@@ -37,7 +16,7 @@ Laravel 中实现用户认证非常简单。实际上，几乎所有东西都已
 
 ### 数据库注意事项
 
-默认情况下，Laravel 在 `app` 目录中包含了一个 [Eloquent 模型](/docs/{{version}}/eloquent) `App\User`。这个模型和默认的 Eloquent 认证驱动一起使用。如果你的应用不使用 Eloquent，也可以使用 Laravel 查询构造器的 `database` 认证驱动。
+默认情况下，Laravel 在 `app` 目录中包含了一个 [Eloquent 模型](/docs/laravel/eloquent) `App\User`。这个模型和默认的 Eloquent 认证驱动一起使用。如果你的应用不使用 Eloquent，也可以使用 Laravel 查询构造器的 `database` 认证驱动。
 
 为 `App\User` 模型创建数据库表结构时，确保密码字段长度至少为 60 个字符以及默认字符串列长度为 255 个字符。
 
@@ -109,7 +88,7 @@ Laravel 默认使用 `email` 字段来认证。如果你想用其他字段认证
 
 `RegisterController` 的 `validator` 方法包含了应用验证新用户的规则，你可以按需要自定义该方法。
 
-`RegisterController` 的 `create` 方法负责使用 [Eloquent ORM](/docs/{{version}}/eloquent) 在数据库中创建新的 `App\User` 记录。你可以根据数据库的需要自定义该方法。
+`RegisterController` 的 `create` 方法负责使用 [Eloquent ORM](/docs/laravel/eloquent) 在数据库中创建新的 `App\User` 记录。你可以根据数据库的需要自定义该方法。
 
 
 ### 检索认证用户
@@ -156,18 +135,18 @@ Laravel 默认使用 `email` 字段来认证。如果你想用其他字段认证
         // 用户已登录...
     }
 
-> {tip} 即使可以使用 `check` 方法确定用户是否被认证，在允许用户访问某些路由／控制器之前，通常还是会使用中间件来验证用户是否进行身份验证。要了解更多信息，请查看有关 [保护路由](/docs/{{version}}/authentication#protecting-routes) 的文档。
+> {tip} 即使可以使用 `check` 方法确定用户是否被认证，在允许用户访问某些路由／控制器之前，通常还是会使用中间件来验证用户是否进行身份验证。要了解更多信息，请查看有关 [保护路由](/docs/laravel/authentication#protecting-routes) 的文档。
 
 
 ### 保护路由
 
-[路由中间件](/docs/{{version}}/middleware) 用于只允许通过认证的用户访问指定的路由。Laravel 自带了在 `Illuminate\Auth\Middleware\Authenticate` 中定义的 `auth` 中间件。由于这个中间件已经在 HTTP 内核中注册，所以只需要将中间件附加到路由定义中：
+[路由中间件](/docs/laravel/middleware) 用于只允许通过认证的用户访问指定的路由。Laravel 自带了在 `Illuminate\Auth\Middleware\Authenticate` 中定义的 `auth` 中间件。由于这个中间件已经在 HTTP 内核中注册，所以只需要将中间件附加到路由定义中：
 
     Route::get('profile', function () {
         // 只有认证过的用户可以...
     })->middleware('auth');
 
-当然，如果使用 [控制器](/docs/{{version}}/controllers)，则可以在构造器中调用 `middleware` 方法来代替在路由中直接定义：
+当然，如果使用 [控制器](/docs/laravel/controllers)，则可以在构造器中调用 `middleware` 方法来代替在路由中直接定义：
 
     public function __construct()
     {
@@ -193,7 +172,7 @@ Laravel 内置的控制器 `LoginController` 已经包含了 `Illuminate\Foundat
 
 当然，不一定要使用 Laravel 内置的认证控制器。如果选择删除这些控制器，你可以直接调用 Laravel 的认证类来管理用户认证。别担心，这简单得很。
 
-我们可以通过 `Auth` [facade](/docs/{{version}}/facades) 来访问 Laravel 的认证服务，因此需要确认类的顶部引入了 `Auth` facade。接下来让我们看一下 `attempt` 方法：
+我们可以通过 `Auth` [facade](/docs/laravel/facades) 来访问 Laravel 的认证服务，因此需要确认类的顶部引入了 `Auth` facade。接下来让我们看一下 `attempt` 方法：
 
     <?php
 
@@ -271,7 +250,7 @@ Laravel 内置的控制器 `LoginController` 已经包含了 `Illuminate\Foundat
 
 #### 验证用户实例
 
-如果需要将现有用户实例记录到应用，可以使用用户实例调用 `login` 方法。给定的对象必须实现了 `Illuminate\Contracts\Auth\Authenticatable` [契约](/docs/{{version}}/contracts) 。当然，Laravel 自带的 `App\User` 模型已经实现了这个接口：
+如果需要将现有用户实例记录到应用，可以使用用户实例调用 `login` 方法。给定的对象必须实现了 `Illuminate\Contracts\Auth\Authenticatable` [契约](/docs/laravel/contracts) 。当然，Laravel 自带的 `App\User` 模型已经实现了这个接口：
 
     Auth::login($user);
 
@@ -302,7 +281,7 @@ Laravel 内置的控制器 `LoginController` 已经包含了 `Illuminate\Foundat
 
 ## HTTP 基础认证
 
-[HTTP 基础认证](https://en.wikipedia.org/wiki/Basic_access_authentication) 提供一种快速方式来认证应用的用户，而且不需要设置专用的「登录」页面。开始之前，先把 `auth.basic` [中间件](/docs/{{version}}/middleware) 添加到你的路由。`auth.basic` 中间件已经被包含在 Laravel 框架中，所以你不需要定义它：
+[HTTP 基础认证](https://en.wikipedia.org/wiki/Basic_access_authentication) 提供一种快速方式来认证应用的用户，而且不需要设置专用的「登录」页面。开始之前，先把 `auth.basic` [中间件](/docs/laravel/middleware) 添加到你的路由。`auth.basic` 中间件已经被包含在 Laravel 框架中，所以你不需要定义它：
 
     Route::get('profile', function () {
         // 只有认证过的用户可进入...
@@ -320,7 +299,7 @@ Laravel 内置的控制器 `LoginController` 已经包含了 `Illuminate\Foundat
 
 ### 无状态 HTTP 基础认证
 
-你可以使用 HTTP 基础认证，而不在会话中设置用户标识符 cookie，这对于 API 认证来说特别有用。为此，请 [定义一个中间件](/docs/{{version}}/middleware) 并调用 `onceBasic` 方法。如果 `onceBasic` 方法没有返回任何响应的话，这个请求可以进一步传递到应用程序中：
+你可以使用 HTTP 基础认证，而不在会话中设置用户标识符 cookie，这对于 API 认证来说特别有用。为此，请 [定义一个中间件](/docs/laravel/middleware) 并调用 `onceBasic` 方法。如果 `onceBasic` 方法没有返回任何响应的话，这个请求可以进一步传递到应用程序中：
 
     <?php
 
@@ -344,7 +323,7 @@ Laravel 内置的控制器 `LoginController` 已经包含了 `Illuminate\Foundat
 
     }
 
-接着，[注册路由中间件](/docs/{{version}}/middleware#registering-middleware) ，然后将它附加到路由：
+接着，[注册路由中间件](/docs/laravel/middleware#registering-middleware) ，然后将它附加到路由：
 
     Route::get('api/user', function () {
         // 只有认证过的用户可以进入...
@@ -353,7 +332,7 @@ Laravel 内置的控制器 `LoginController` 已经包含了 `Illuminate\Foundat
 
 ## 增加自定义的看守器
 
-你可以使用 `Auth` facade 的 `extend` 方法来定义自己的身份验证提供器。 你需要在 [服务提供器](/docs/{{version}}/providers) 中调用这个提供器。由于 Laravel 已经配备了 `AuthServiceProvider`，我们可以把代码放在这个提供器中：
+你可以使用 `Auth` facade 的 `extend` 方法来定义自己的身份验证提供器。 你需要在 [服务提供器](/docs/laravel/providers) 中调用这个提供器。由于 Laravel 已经配备了 `AuthServiceProvider`，我们可以把代码放在这个提供器中：
 
     <?php
 
@@ -496,7 +475,7 @@ Laravel 内置的控制器 `LoginController` 已经包含了 `Illuminate\Foundat
 
 ## 事件
 
-Laravel 在认证过程中引发了各种各样的 [事件](/docs/{{version}}/events)。你可以在 `EventServiceProvider` 中对这些事件做监听：
+Laravel 在认证过程中引发了各种各样的 [事件](/docs/laravel/events)。你可以在 `EventServiceProvider` 中对这些事件做监听：
 
     /**
      * 应用程序的事件监听器映射。

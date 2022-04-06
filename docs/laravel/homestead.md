@@ -1,42 +1,5 @@
 # Laravel 虚拟开发环境 Homestead
 
-- [Laravel 虚拟开发环境 Homestead](#laravel-虚拟开发环境-homestead)
-  - [简介](#简介)
-    - [内置软件](#内置软件)
-  - [安装与设置](#安装与设置)
-    - [第一步](#第一步)
-      - [安装 Homestead Vagrant Box](#安装-homestead-vagrant-box)
-      - [安装 Homestead](#安装-homestead)
-    - [配置 Homestead](#配置-homestead)
-      - [配置提供器](#配置提供器)
-      - [配置共享文件夹](#配置共享文件夹)
-      - [配置 Nginx 站点](#配置-nginx-站点)
-      - [关于 Hosts 文件](#关于-hosts-文件)
-    - [启动 Vagrant Box](#启动-vagrant-box)
-    - [根据项目安装](#根据项目安装)
-    - [安装 MariaDB](#安装-mariadb)
-  - [常见用法](#常见用法)
-    - [全局使用](#全局使用)
-      - [Mac / Linux](#mac--linux)
-      - [Windows](#windows)
-    - [通过 SSH 连接](#通过-ssh-连接)
-    - [连接数据库](#连接数据库)
-    - [增加更多网站](#增加更多网站)
-      - [站点类型](#站点类型)
-      - [站点参数](#站点参数)
-    - [配置 Cron 调度器](#配置-cron-调度器)
-    - [端口](#端口)
-      - [转发更多端口](#转发更多端口)
-    - [共享你的环境](#共享你的环境)
-    - [多个 PHP 版本](#多个-php-版本)
-  - [网络接口](#网络接口)
-  - [更新 Homestead](#更新-homestead)
-  - [历史版本](#历史版本)
-  - [提供器的特殊设置](#提供器的特殊设置)
-    - [VirtualBox](#virtualbox)
-  - [译者署名](#译者署名)
-
-
 ## 简介
 
 Laravel 努力使整个 PHP 开发体验更加愉快，包括你的本地开发环境。[Vagrant](https://www.vagrantup.com) 提供了一种简单、优雅的方式来管理和配置虚拟机。
@@ -300,7 +263,7 @@ Homestead 支持多种类型的站点，可以让你轻松地运行那些不基�
 
 ### 配置 Cron 调度器
 
-Laravel 提供了便利的方式来 [调度 Cron 任务](/docs/{{version}}/scheduling)，通过Artisan 命令 `schedule:run` ，调度便会在每分钟运行一次。`schedule:run` 命令会检查定义在你 `App\Console\Kernel` 类中的调度任务，以此判断哪个任务该被运行。
+Laravel 提供了便利的方式来 [调度 Cron 任务](/docs/laravel/scheduling)，通过Artisan 命令 `schedule:run` ，调度便会在每分钟运行一次。`schedule:run` 命令会检查定义在你 `App\Console\Kernel` 类中的调度任务，以此判断哪个任务该被运行。
 
 如果你想对 Homestead 站点使用 `schedule:run` 命令，你需要在定义站点时将 `schedule` 选项设置为 `true`
 

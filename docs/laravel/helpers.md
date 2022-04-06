@@ -1,8 +1,4 @@
-# Laravel 的辅助函数列表
-
-- [简介](#introduction)
-- [可用方法](#available-methods)
-
+# 辅助函数列表
 
 ## 简介
 
@@ -736,7 +732,7 @@ $path = database_path();
 
 #### `mix()` {collection-method}
 
-`mix` 函数获取 [版本化 Mix 文件](/docs/{{version}}/mix) 的路径：
+`mix` 函数获取 [版本化 Mix 文件](/docs/laravel/mix) 的路径：
 
 ````
 mix($file);
@@ -779,7 +775,7 @@ $path = storage_path('app/file.txt');
 
 #### `__()` {collection-method}
 
-`__` 函数使用你的 [本地化文件](/docs/{{version}}/localization) 来翻译给定的翻译字符串或翻译键：
+`__` 函数使用你的 [本地化文件](/docs/laravel/localization) 来翻译给定的翻译字符串或翻译键：
 
 ````
 echo __('Welcome to our application');
@@ -1109,7 +1105,7 @@ $title = title_case('a nice title uses the correct case');
 
 #### `trans()` {collection-method}
 
-`trans` 函数使用你的 [本地化文件](/docs/{{version}}/localization) 来翻译给定的翻译字符串或翻译键：
+`trans` 函数使用你的 [本地化文件](/docs/laravel/localization) 来翻译给定的翻译字符串或翻译键：
 
 ````
 echo trans('messages.welcome');
@@ -1222,7 +1218,7 @@ echo url()->previous();
 
 #### `abort()` {collection-method}
 
-`abort` 函数抛出 [异常处理](/docs/{{version}}/errors#the-exception-handler) 程序呈现的 [HTTP 异常](/docs/{{version}}/errors#http-exceptions)：
+`abort` 函数抛出 [异常处理](/docs/laravel/errors#the-exception-handler) 程序呈现的 [HTTP 异常](/docs/laravel/errors#http-exceptions)：
 
 ````
 abort(401);
@@ -1261,7 +1257,7 @@ abort_unless(Auth::user()->isAdmin(), 403);
 
 #### `app()` {collection-method}
 
-`app` 函数返回 [服务容器](/docs/{{version}}/container) 实例
+`app` 函数返回 [服务容器](/docs/laravel/container) 实例
 
 ````
 $container = app();
@@ -1276,7 +1272,7 @@ $api = app('HelpSpot\API');
 
 #### `auth()` {collection-method}
 
-`auth` 函数返回一个 [认证](/docs/{{version}}/authentication) 实例。为了方便起见，你可以使用它来替代 `Auth` facade：
+`auth` 函数返回一个 [认证](/docs/laravel/authentication) 实例。为了方便起见，你可以使用它来替代 `Auth` facade：
 
 ````
 $user = auth()->user();
@@ -1291,7 +1287,7 @@ $user = auth('admin')->user();
 
 #### `back()` {collection-method}
 
-`back()` 函数生成一个 [重定向 HTTP 响应](/docs/{{version}}/responses#redirects) 到用户之前的位置：
+`back()` 函数生成一个 [重定向 HTTP 响应](/docs/laravel/responses#redirects) 到用户之前的位置：
 
 ````
 return back($status = 302, $headers = [], $fallback = false);
@@ -1312,7 +1308,7 @@ $password = bcrypt('my-secret-password');
 
 #### `broadcast()` {collection-method}
 
-`broadcast` 函数将 [广播](/docs/{{version}}/broadcasting) 给定的 [事件](/docs/{{version}}/events) 到它的监听器：
+`broadcast` 函数将 [广播](/docs/laravel/broadcasting) 给定的 [事件](/docs/laravel/events) 到它的监听器：
 
 ````
 broadcast(new UserRegistered($user));
@@ -1339,7 +1335,7 @@ blank(false);
 // false
 ````
 
-要使用与 `blank` 相反的功能，请看 [filled](/docs/{{version}}/helpers#method-filled) 方法。
+要使用与 `blank` 相反的功能，请看 [filled](/docs/laravel/helpers#method-filled) 方法。
 
 
 
@@ -1375,7 +1371,7 @@ $traits = class_uses_recursive(App\User::class);
 
 #### `collect()` {collection-method}
 
-`collect` 函数根据给定的数组创建一个 [集合](/docs/{{version}}/collections) 实例：
+`collect` 函数根据给定的数组创建一个 [集合](/docs/laravel/collections) 实例：
 
 ````
 $collection = collect(['taylor', 'abigail']);
@@ -1384,7 +1380,7 @@ $collection = collect(['taylor', 'abigail']);
 
 #### `config()` {collection-method}
 
-`config` 函数获取 [配置](/docs/{{version}}/configuration) 变量的值。可以使用「点」语法访问配置值，其中包括文件的名称和希望访问的选项。如果配置选项不存在，则可以指定一个默认值并返回：
+`config` 函数获取 [配置](/docs/laravel/configuration) 变量的值。可以使用「点」语法访问配置值，其中包括文件的名称和希望访问的选项。如果配置选项不存在，则可以指定一个默认值并返回：
 
 ````
 $value = config('app.timezone');
@@ -1402,7 +1398,7 @@ config(['app.debug' => true]);
 
 #### `cookie()` {collection-method}
 
-`cookie` 函数创建一个新的 [cookie](/docs/{{version}}/requests#cookies) 实例：
+`cookie` 函数创建一个新的 [cookie](/docs/laravel/requests#cookies) 实例：
 
 ````
 $cookie = cookie('name', 'value', $minutes);
@@ -1412,7 +1408,7 @@ $cookie = cookie('name', 'value', $minutes);
 
 #### `csrf_field()` {collection-method}
 
-`csrf_field` 函数生成包含 CSRF 令牌值的 HTML `hidden` 表单字段。例如，使用 [Blade 语法](/docs/{{version}}/blade)：
+`csrf_field` 函数生成包含 CSRF 令牌值的 HTML `hidden` 表单字段。例如，使用 [Blade 语法](/docs/laravel/blade)：
 
 ````
 {{ csrf_field() }}
@@ -1444,7 +1440,7 @@ dd($value1, $value2, $value3, ...);
 
 #### `decrypt()` {collection-method}
 
-`decrypt` 函数使用 Laravel 的 [加密器](/docs/{{version}}/encryption) 来解密给定的值：
+`decrypt` 函数使用 Laravel 的 [加密器](/docs/laravel/encryption) 来解密给定的值：
 
 ````
 $decrypted = decrypt($encrypted_value);
@@ -1454,7 +1450,7 @@ $decrypted = decrypt($encrypted_value);
 
 #### `dispatch()` {collection-method}
 
-`dispatch` 函数将给定的 [任务](/docs/{{version}}/queues#creating-jobs) 推送到 Laravel [任务列队](/docs/{{version}}/queues) 中：
+`dispatch` 函数将给定的 [任务](/docs/laravel/queues#creating-jobs) 推送到 Laravel [任务列队](/docs/laravel/queues) 中：
 
 ````
 dispatch(new App\Jobs\SendEmails);
@@ -1464,7 +1460,7 @@ dispatch(new App\Jobs\SendEmails);
 
 #### `dispatch_now()` {collection-method}
 
-`dispatch_now` 函数立即运行给定的 [任务](/docs/{{version}}/queues#creating-jobs)，并从其 `handle` 方法返回值：
+`dispatch_now` 函数立即运行给定的 [任务](/docs/laravel/queues#creating-jobs)，并从其 `handle` 方法返回值：
 
 ````
 $result = dispatch_now(new App\Jobs\SendEmails);
@@ -1488,7 +1484,7 @@ dump($value1, $value2, $value3, ...);
 
 #### `encrypt()` {collection-method}
 
-`encrypt` 函数使用 Laravel 的 [加密器](/docs/{{version}}/encryption) 对给定的值进行加密：
+`encrypt` 函数使用 Laravel 的 [加密器](/docs/laravel/encryption) 对给定的值进行加密：
 
 ````
 $encrypted = encrypt($unencrypted_value);
@@ -1498,7 +1494,7 @@ $encrypted = encrypt($unencrypted_value);
 
 #### `env()` {collection-method}
 
-`env` 函数获取 [环境变量](/docs/{{version}}/configuration#environment-configuration) 的值或者返回默认值：
+`env` 函数获取 [环境变量](/docs/laravel/configuration#environment-configuration) 的值或者返回默认值：
 
 ````
 $env = env('APP_ENV');
@@ -1510,7 +1506,7 @@ $env = env('APP_ENV', 'production');
 
 #### `event()` {collection-method}
 
-`event` 函数将给定的 [事件](/docs/{{version}}/events) 分派给它的监听器：
+`event` 函数将给定的 [事件](/docs/laravel/events) 分派给它的监听器：
 
 ````
 event(new UserRegistered($user));
@@ -1519,7 +1515,7 @@ event(new UserRegistered($user));
 
 #### `factory()` {collection-method}
 
-`factory` 函数根据给定的类、名称和数量创建一个模型工厂构建器。可以在 [测试](/docs/{{version}}/database-testing#writing-factories) or [数据填充](/docs/{{version}}/seeding#using-model-factories) 中使用：
+`factory` 函数根据给定的类、名称和数量创建一个模型工厂构建器。可以在 [测试](/docs/laravel/database-testing#writing-factories) or [数据填充](/docs/laravel/seeding#using-model-factories) 中使用：
 
 ````
 $user = factory(App\User::class)->make();
@@ -1545,7 +1541,7 @@ filled(collect());
 // false
 ````
 
-要使用与 `filled` 相反的功能，请看 [blank](/docs/{{version}}/helpers#method-blank) 方法。
+要使用与 `filled` 相反的功能，请看 [blank](/docs/laravel/helpers#method-blank) 方法。
 
 
 
@@ -1566,7 +1562,7 @@ info('User login attempt failed.', ['id' => $user->id]);
 
 #### `logger()` {collection-method}
 
-`logger` 函数可以将一个 `debug` 级别的消息写入到 [日志](/docs/{{version}}/errors#logging) 中：
+`logger` 函数可以将一个 `debug` 级别的消息写入到 [日志](/docs/laravel/errors#logging) 中：
 
 ````
 logger('Debug message');
@@ -1578,7 +1574,7 @@ logger('Debug message');
 logger('User has logged in.', ['id' => $user->id]);
 ````
 
-如果没有传值给函数则返回 [日志](/docs/{{version}}/errors#logging) 的实例：
+如果没有传值给函数则返回 [日志](/docs/laravel/errors#logging) 的实例：
 
 ````
 logger()->error('You are not allowed here.');
@@ -1587,7 +1583,7 @@ logger()->error('You are not allowed here.');
 
 #### `method_field()` {collection-method}
 
-`method_field` 函数生成一个 HTML `hidden` 表单字段，其中包含表单的 HTTP 动作的欺骗值。例如，使用 [Blade 语法](/docs/{{version}}/blade)：
+`method_field` 函数生成一个 HTML `hidden` 表单字段，其中包含表单的 HTTP 动作的欺骗值。例如，使用 [Blade 语法](/docs/laravel/blade)：
 
 ````
 <form method="POST">
@@ -1606,7 +1602,7 @@ $now = now();
 
 #### `old()` {collection-method}
 
-`old` 函数 [获取](/docs/{{version}}/requests#retrieving-input) 会话中闪存的 [旧输入](/docs/{{version}}/requests#old-input) 值：
+`old` 函数 [获取](/docs/laravel/requests#retrieving-input) 会话中闪存的 [旧输入](/docs/laravel/requests#old-input) 值：
 
 ````
 $value = old('value');
@@ -1628,7 +1624,7 @@ return optional($user->address)->street;
 
 #### `policy()` {collection-method}
 
-`policy` 方法为给定的类获取一个 [策略](/docs/{{version}}/authorization#creating-policies) 实例：
+`policy` 方法为给定的类获取一个 [策略](/docs/laravel/authorization#creating-policies) 实例：
 
 ````
 $policy = policy(App\User::class);
@@ -1637,7 +1633,7 @@ $policy = policy(App\User::class);
 
 #### `redirect()` {collection-method}
 
-`redirect` 函数返回一个 [重定向 HTTP 响应](/docs/{{version}}/responses#redirects)，如果没有没有传入参数，则返回重定向实例：
+`redirect` 函数返回一个 [重定向 HTTP 响应](/docs/laravel/responses#redirects)，如果没有没有传入参数，则返回重定向实例：
 
 ````
 return redirect('/home');
@@ -1648,7 +1644,7 @@ return redirect()->route('route.name');
 
 #### `report()` {collection-method}
 
-`report` 函数将使用 [异常处理程序](/docs/{{version}}/errors#the-exception-handler) 的 `report` 方法抛出异常：
+`report` 函数将使用 [异常处理程序](/docs/laravel/errors#the-exception-handler) 的 `report` 方法抛出异常：
 
 ````
 report($e);
@@ -1657,7 +1653,7 @@ report($e);
 
 #### `request()` {collection-method}
 
-`request` 函数返回当前 [请求](/docs/{{version}}/requests) 实例或者获取输入项：
+`request` 函数返回当前 [请求](/docs/laravel/requests) 实例或者获取输入项：
 
 ````
 $request = request();
@@ -1669,7 +1665,7 @@ $value = request('key', $default = null)
 
 #### `rescue()` {collection-method}
 
-`rescue` 函数执行给定的闭包并捕获执行期间发生的任何异常。所有被捕获的异常将被发送到你的 [异常处理程序](/docs/{{version}}/errors#the-exception-handler) 的 `report` 方法。要注意的是，该请求将继续处理：
+`rescue` 函数执行给定的闭包并捕获执行期间发生的任何异常。所有被捕获的异常将被发送到你的 [异常处理程序](/docs/laravel/errors#the-exception-handler) 的 `report` 方法。要注意的是，该请求将继续处理：
 
 ````
 return rescue(function () {
@@ -1694,7 +1690,7 @@ return rescue(function () {
 
 #### `resolve()` {collection-method}
 
-`resolve` 函数使用 [服务容器](/docs/{{version}}/container) 将给定的类或接口名称解析为其实例：
+`resolve` 函数使用 [服务容器](/docs/laravel/container) 将给定的类或接口名称解析为其实例：
 
 ````
 $api = resolve('HelpSpot\API');
@@ -1704,7 +1700,7 @@ $api = resolve('HelpSpot\API');
 
 #### `response()` {collection-method}
 
-`response` 函数创建 [响应](/docs/{{version}}/responses) 实例或者获取响应工厂实例：
+`response` 函数创建 [响应](/docs/laravel/responses) 实例或者获取响应工厂实例：
 
 ````
 return response('Hello World', 200, $headers);
@@ -1726,7 +1722,7 @@ return retry(5, function () {
 
 #### `session()` {collection-method}
 
-`session` 函数可以用来获取或者设置 [Session](/docs/{{version}}/session) 值：
+`session` 函数可以用来获取或者设置 [Session](/docs/laravel/session) 值：
 
 ````
 $value = session('key');
@@ -1844,7 +1840,7 @@ $result = transform(null, $callback, 'The value is blank');
 
 #### `validator()` {collection-method}
 
-`validator` 函数用给定的参数创建一个新的 [验证器](/docs/{{version}}/validation) 实例。为方便起见，你可以使用它来代替 `Validator` facade ：
+`validator` 函数用给定的参数创建一个新的 [验证器](/docs/laravel/validation) 实例。为方便起见，你可以使用它来代替 `Validator` facade ：
 
 ````
 $validator = validator($data, $rules, $messages);
@@ -1871,7 +1867,7 @@ $result = value(function () {
 
 #### `view()` {collection-method}
 
-`view` 函数获取一个 [视图](/docs/{{version}}/views) 实例：
+`view` 函数获取一个 [视图](/docs/laravel/views) 实例：
 
 ````
 return view('auth.login');

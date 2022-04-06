@@ -1,23 +1,4 @@
-# Laravel 的 Artisan 命令行工具
-
-- [简介](#introduction)
-- [编写命令](#writing-commands)
-    - [生成命令](#generating-commands)
-    - [命令结构](#command-structure)
-    - [闭包命令](#closure-commands)
-- [定义输入期望](#defining-input-expectations)
-    - [参数](#arguments)
-    - [选项](#options)
-    - [输入数组](#input-arrays)
-    - [输入说明](#input-descriptions)
-- [I/O 命令](#command-io)
-    - [检索输入](#retrieving-input)
-    - [交互式输入](#prompting-for-input)
-    - [编写输出](#writing-output)
-- [注册命令](#registering-commands)
-- [以编程方式执行命令](#programmatically-executing-commands)
-    - [从其他命令调用命令](#calling-commands-from-other-commands)
-
+#  Artisan 命令行工具
 
 ## 简介
 
@@ -54,7 +35,7 @@ Artisan 是 Laravel 自带的命令行接口，它提供了许多实用的命令
 
 > {tip} 为了更好的代码复用，最好保持你的控制台代码轻量并让它们延迟到应用服务中完成。在下面的例子中，请注意，我们注入了一个服务类来完成发送邮件的「重任」。
 
-让我们看一个简单的例子。注意，我们可以在 Command 的构造函数中注入我们需要的任何依赖项。Laravel [服务容器](/docs/{{version}}/container) 将会自动注入所有在构造函数中的带类型约束的依赖：
+让我们看一个简单的例子。注意，我们可以在 Command 的构造函数中注入我们需要的任何依赖项。Laravel [服务容器](/docs/laravel/container) 将会自动注入所有在构造函数中的带类型约束的依赖：
 
     <?php
 
@@ -136,7 +117,7 @@ Artisan 是 Laravel 自带的命令行接口，它提供了许多实用的命令
 
 #### 类型提示依赖
 
-除了接收命令的参数和选项外，命令闭包也可以使用类型提示从 [服务容器](/docs/{{version}}/container) 中解析你想要的其他依赖关系：
+除了接收命令的参数和选项外，命令闭包也可以使用类型提示从 [服务容器](/docs/laravel/container) 中解析你想要的其他依赖关系：
 
     use App\User;
     use App\DripEmailer;
@@ -393,7 +374,7 @@ Artisan 是 Laravel 自带的命令行接口，它提供了许多实用的命令
         // ...
     }
 
-你还可以通过将其类名添加到 `app/Console/Kernel.php` 文件的 `$command` 属性来手动注册命令。当 Artisan 启动时，该属性中列出的所有命令将由 [服务容器](/docs/{{version}}/container) 解析并在 Artisan 注册：
+你还可以通过将其类名添加到 `app/Console/Kernel.php` 文件的 `$command` 属性来手动注册命令。当 Artisan 启动时，该属性中列出的所有命令将由 [服务容器](/docs/laravel/container) 解析并在 Artisan 注册：
 
     protected $commands = [
         Commands\SendEmails::class
@@ -412,7 +393,7 @@ Artisan 是 Laravel 自带的命令行接口，它提供了许多实用的命令
         //
     });
 
-在 `Artisan` facade 上使用 `queue` 方法，可以将 Artisan 命令交由 [队列工作进程](/docs/{{version}}/queues) 在后台进行处理。在使用此方法之前，请确保已配置队列并运行了队列监听器：
+在 `Artisan` facade 上使用 `queue` 方法，可以将 Artisan 命令交由 [队列工作进程](/docs/laravel/queues) 在后台进行处理。在使用此方法之前，请确保已配置队列并运行了队列监听器：
 
     Route::get('/foo', function () {
         Artisan::queue('email:send', [

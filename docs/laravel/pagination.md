@@ -1,19 +1,9 @@
-# Laravel 的分页功能
-
-- [简介](#introduction)
-- [基本用法](#basic-usage)
-    - [查询构造器分页](#paginating-query-builder-results)
-    - [Eloquent 分页](#paginating-eloquent-results)
-    - [手动创建分页](#manually-creating-a-paginator)
-- [显示分页结果](#displaying-pagination-results)
-    - [将结果转换为 JSON](#converting-results-to-json)
-- [自定义分页视图](#customizing-the-pagination-view)
-- [分页器实例方法](#paginator-instance-methods)
+# 分页功能
 
 
 ## 简介
 
-在大多数的框架中，分页无不令人十分头疼。 Laravel 的分页器与[查询构造器](/docs/{{version}}/queries)、[Eloquent ORM](/docs/{{version}}/eloquent) 集成在一起，并提供方便易用的数据结果集分页。分页器生成的 HTML 与 Bootstrap CSS 框架兼容。
+在大多数的框架中，分页无不令人十分头疼。 Laravel 的分页器与[查询构造器](/docs/laravel/queries)、[Eloquent ORM](/docs/laravel/eloquent) 集成在一起，并提供方便易用的数据结果集分页。分页器生成的 HTML 与 Bootstrap CSS 框架兼容。
 
 
 ## 基本用法
@@ -21,7 +11,7 @@
 
 ### 查询构造器分页
 
-有几种方法可以对数据进行分页。最简单的是在 [查询语句构造器](/docs/{{version}}/queries)  或 [Eloquent 查询](/docs/{{version}}/eloquent) 中使用 `paginate` 方法。 `paginate` 方法会自动根据用户正在查看的页面来设置限制和偏移量。默认情况下，当前页面通过 HTTP 请求所带的参数 `page` 的值来检测。这个值是被 Laravel 自动检测到的，也会自动插入到由分页器生产的链接中。
+有几种方法可以对数据进行分页。最简单的是在 [查询语句构造器](/docs/laravel/queries)  或 [Eloquent 查询](/docs/laravel/eloquent) 中使用 `paginate` 方法。 `paginate` 方法会自动根据用户正在查看的页面来设置限制和偏移量。默认情况下，当前页面通过 HTTP 请求所带的参数 `page` 的值来检测。这个值是被 Laravel 自动检测到的，也会自动插入到由分页器生产的链接中。
 
 在下面这个例子中，传递给 `paginate` 方法的唯一参数是「每页」显示的项目数量。下面是每页显示 `15` 条数据的例子：
 
@@ -58,7 +48,7 @@
 
 ### Eloquent 模型分页
 
-你也可以对 [Eloquent](/docs/{{version}}/eloquent) 查询进行分页。下面的例子中对 `User` 模型进行了分页并且每页显示 `15` 条数据。正如你看到的，所使用的语法几乎与基于查询语句构造器分页时的完全相同：
+你也可以对 [Eloquent](/docs/laravel/eloquent) 查询进行分页。下面的例子中对 `User` 模型进行了分页并且每页显示 `15` 条数据。正如你看到的，所使用的语法几乎与基于查询语句构造器分页时的完全相同：
 
     $users = App\User::paginate(15);
 
@@ -84,7 +74,7 @@
 
 ## 显示分页结果
 
-在调用 `paginate` 方法时，你将会接收到一个 `Illuminate\Pagination\LengthAwarePaginator` 实例。当调用 `simplePaginate` 方法时，你将会接收到一个 `Illuminate\Pagination\Paginator` 实例。这些对象提供了一些用于渲染结果集的函数。除了这些辅助函数，分页器实例是一个迭代器，也可以作为数组循环。因此，一旦检测到结果集，你可以使用 [Blade](/docs/{{version}}/blade) 模板显示结果集并渲染页面链接：
+在调用 `paginate` 方法时，你将会接收到一个 `Illuminate\Pagination\LengthAwarePaginator` 实例。当调用 `simplePaginate` 方法时，你将会接收到一个 `Illuminate\Pagination\Paginator` 实例。这些对象提供了一些用于渲染结果集的函数。除了这些辅助函数，分页器实例是一个迭代器，也可以作为数组循环。因此，一旦检测到结果集，你可以使用 [Blade](/docs/laravel/blade) 模板显示结果集并渲染页面链接：
 
     <div class="container">
         @foreach ($users as $user)

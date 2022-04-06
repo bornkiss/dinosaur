@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Bornkiss',
-  tagline: 'Kissing JavaScript',
+  tagline: 'Love And Pease', // Kissing JavaScript
   url: 'https://docs.bornkiss.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',

@@ -1,22 +1,4 @@
-# Laravel 的开发环境 Valet
-
-- [Laravel 的开发环境 Valet](#laravel-的开发环境-valet)
-  - [简介](#简介)
-    - [Valet 还是 Homestead？](#valet-还是-homestead)
-  - [安装](#安装)
-      - [使用其它域名](#使用其它域名)
-      - [数据库](#数据库)
-    - [升级](#升级)
-      - [升级到 Valet 2.0](#升级到-valet-20)
-  - [服务站点](#服务站点)
-  - [分享站点](#分享站点)
-  - [自定义 Valet 驱动](#自定义-valet-驱动)
-      - [`serves` 方法](#serves-方法)
-      - [`isStaticFile` 方法](#isstaticfile-方法)
-      - [`frontControllerPath` 方法](#frontcontrollerpath-方法)
-    - [本地驱动](#本地驱动)
-  - [其它 Valet 命令](#其它-valet-命令)
-  - [译者署名](#译者署名)
+# 开发环境 Valet
 
 
 ## 简介
@@ -59,7 +41,7 @@ However, you may extend Valet with your own [custom drivers](#custom-valet-drive
 
 ### Valet 还是 Homestead？
 
-Laravel 还提供了另一种本地开发环境 [Homestead](/docs/{{version}}/homestead)。Homestead 和 Valet 的不同之处在于目标受众和对本地开发的方式。Homestead 提供了一个完整的、具有自动化的 Nginx 配置的 Ubuntu 虚拟机。如果你想要完全虚拟化的 Linux 开发环境或 Windows／Linux，Homestead 是一个不错的选择。
+Laravel 还提供了另一种本地开发环境 [Homestead](/docs/laravel/homestead)。Homestead 和 Valet 的不同之处在于目标受众和对本地开发的方式。Homestead 提供了一个完整的、具有自动化的 Nginx 配置的 Ubuntu 虚拟机。如果你想要完全虚拟化的 Linux 开发环境或 Windows／Linux，Homestead 是一个不错的选择。
 
 Valet 仅支持 Mac，并要求你将 PHP 和数据库服务器直接安装到本地机器上。这可以很容易地通过使用 Homebrew 命令来实现，像 `brew install php71` 和 `brew install mysql`。Valet 提供了一个极快的、资源消耗最少本地开发环境，非常适合只需要 PHP／MySQL 并且不需要虚拟开发环境的开发人员。
 

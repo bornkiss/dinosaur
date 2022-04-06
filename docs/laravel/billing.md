@@ -1,31 +1,4 @@
-# Laravel 的收费系统 Cashier
-
-- [简介](#introduction)
-- [配置](#configuration)
-    - [Stripe](#stripe-configuration)
-    - [Braintree](#braintree-configuration)
-    - [货币配置](#currency-configuration)
-- [订阅](#subscriptions)
-    - [创建订阅](#creating-subscriptions)
-    - [检查订阅状态](#checking-subscription-status)
-    - [修改订阅计划](#changing-plans)
-    - [订阅量](#subscription-quantity)
-    - [订阅税额](#subscription-taxes)
-    - [取消订阅](#cancelling-subscriptions)
-    - [恢复订阅](#resuming-subscriptions)
-    - [更新信用卡](#updating-credit-cards)
-- [试用订阅](#subscription-trials)
-    - [有信用卡的情况下](#with-credit-card-up-front)
-    - [在没有信用卡的情况下](#without-credit-card-up-front)
-- [处理 Stripe Webhooks](#handling-stripe-webhooks)
-    - [定义 Webhook 事件处理程序](#defining-webhook-event-handlers)
-    - [订阅失败](#handling-failed-subscriptions)
-- [处理 Braintree Webhooks    ](#handling-braintree-webhooks)
-    - [定义 Webhook 事件处理程序](#defining-braintree-webhook-event-handlers)
-    - [订阅失败](#handling-braintree-failed-subscriptions)
-- [一次性收费](#single-charges)
-- [发票](#invoices)
-    - [生成发票的 PDFs](#generating-invoice-pdfs)
+# 收费系统 Cashier
 
 
 
@@ -50,11 +23,11 @@
     composer require "laravel/cashier":"~7.0"
 
 #### 服务提供者
-下一步, 在 `config/app.php` 配置文件中，注册 `Laravel\Cashier\CashierServiceProvider` [服务提供者](/docs/{{version}}/providers).
+下一步, 在 `config/app.php` 配置文件中，注册 `Laravel\Cashier\CashierServiceProvider` [服务提供者](/docs/laravel/providers).
 
 #### 数据库迁移
 
-在使用 Cashier 之前，我们需要 [准备数据库](/docs/{{version}}/migrations). 我们需要向您的 `users` 表中添加几个列，并创建一个新的 `subscriptions` 表来保存所有客户的订阅：
+在使用 Cashier 之前，我们需要 [准备数据库](/docs/laravel/migrations). 我们需要向您的 `users` 表中添加几个列，并创建一个新的 `subscriptions` 表来保存所有客户的订阅：
 
     Schema::table('users', function ($table) {
         $table->string('stripe_id')->nullable();
@@ -120,7 +93,7 @@
 
 #### 服务提供者
 
-下一步, 在 `config/app.php` 配置文件中，注册  `Laravel\Cashier\CashierServiceProvider` [服务提供者](/docs/{{version}}/providers)：
+下一步, 在 `config/app.php` 配置文件中，注册  `Laravel\Cashier\CashierServiceProvider` [服务提供者](/docs/laravel/providers)：
 
     Laravel\Cashier\CashierServiceProvider::class
 
@@ -132,7 +105,7 @@
 
 #### 数据库迁移
 
-开始使用 Cashier 之前, 我们需要 [准备一下数据库](/docs/{{version}}/migrations).我们需要在数据库的 `users` 表中新增几列，以及创建一个新的 `subscriptions` 表来存储客户的订阅信息：
+开始使用 Cashier 之前, 我们需要 [准备一下数据库](/docs/laravel/migrations).我们需要在数据库的 `users` 表中新增几列，以及创建一个新的 `subscriptions` 表来存储客户的订阅信息：
 
     Schema::table('users', function ($table) {
         $table->string('braintree_id')->nullable();
@@ -243,7 +216,7 @@ Cashier 使用美元（USD）作为默认货币。你可以通过在服务提供
         //
     }
 
-这个 `subscribed` 方法还可以在 [路由中间件](/docs/{{version}}/middleware) 使用，允许您根据用户的订阅状态对路由和控制器进行访问。
+这个 `subscribed` 方法还可以在 [路由中间件](/docs/laravel/middleware) 使用，允许您根据用户的订阅状态对路由和控制器进行访问。
 
     public function handle($request, Closure $next)
     {
@@ -413,7 +386,7 @@ Cashier 使用美元（USD）作为默认货币。你可以通过在服务提供
         'trial_ends_at' => Carbon::now()->addDays(10),
     ]);
 
-> {note}请确保在你的模型中已经为 `trial_ends_at` [日期转换器](/docs/{{version}}/eloquent-mutators#date-mutators)。
+> {note}请确保在你的模型中已经为 `trial_ends_at` [日期转换器](/docs/laravel/eloquent-mutators#date-mutators)。
 
 Cashier 把这种类型的试用引用为「generic trial」, 因为它并没有关联任何已存在的订阅。如果当前的日期没有超过 `trial_ends_at` 的值，那么 `User` 实例上的  `onTrial` 方法将返回 `true` ：
 
@@ -450,7 +423,7 @@ Cashier 把这种类型的试用引用为「generic trial」, 因为它并没有
 
 #### Webhooks & CSRF 保护
 
-因为 Stripe webhooks 需要绕过 Laravel 的 [CSRF 保护](/docs/{{version}}/csrf)，一定要在 `VerifyCsrfToken` 中间件中列出 URI ，或者列出 `web` 中间件组之外的路由：
+因为 Stripe webhooks 需要绕过 Laravel 的 [CSRF 保护](/docs/laravel/csrf)，一定要在 `VerifyCsrfToken` 中间件中列出 URI ，或者列出 `web` 中间件组之外的路由：
 
     protected $except = [
         'stripe/*',
@@ -514,7 +487,7 @@ Stripe 和 Braintree 都可以通过 webhooks 通知你的应用程序。要处�
 
 #### Webhooks & CSRF 保护
 
-因为 Braintree webhooks 需要绕过 Laravel 的 [CSRF 保护](/docs/{{version}}/csrf)，所以一定要在 `VerifyCsrfToken` 中间件中列出这个 URI ，或者列出 `web` 中间件组之外的路由:
+因为 Braintree webhooks 需要绕过 Laravel 的 [CSRF 保护](/docs/laravel/csrf)，所以一定要在 `VerifyCsrfToken` 中间件中列出这个 URI ，或者列出 `web` 中间件组之外的路由:
 
     protected $except = [
         'braintree/*',

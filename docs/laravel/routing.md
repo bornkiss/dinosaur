@@ -1,24 +1,5 @@
 # Laravel HTTP 路由功能
 
-- [基本路由](#basic-routing)
-    - [重定向路由](#redirect-routes)
-    - [视图路由](#view-routes)
-- [路由参数](#route-parameters)
-    - [必填参数](#required-parameters)
-    - [可选参数](#parameters-optional-parameters)
-    - [正则表达式约束](#parameters-regular-expression-constraints)
-- [命名路由](#named-routes)
-- [路由组](#route-groups)
-    - [中间件](#route-group-middleware)
-    - [命名空间](#route-group-namespaces)
-    - [子域名路由](#route-group-sub-domain-routing)
-    - [路由前缀](#route-group-prefixes)
-- [路由模型绑定](#route-model-binding)
-    - [隐式绑定](#implicit-binding)
-    - [显式绑定](#explicit-binding)
-- [表单方法伪造](#form-method-spoofing)
-- [访问当前路由](#accessing-the-current-route)
-
 
 ## 基本路由
 
@@ -61,7 +42,7 @@
 
 #### CSRF 保护
 
-指向 `web` 路由文件中定义的 `POST`、`PUT` 或 `DELETE` 路由的任何 HTML 表单都应该包含一个 CSRF 令牌字段，否则，这个请求将会被拒绝。可以在 [CSRF 文档](/docs/{{version}}/csrf) 中阅读有关 CSRF 保护的更多信息：
+指向 `web` 路由文件中定义的 `POST`、`PUT` 或 `DELETE` 路由的任何 HTML 表单都应该包含一个 CSRF 令牌字段，否则，这个请求将会被拒绝。可以在 [CSRF 文档](/docs/laravel/csrf) 中阅读有关 CSRF 保护的更多信息：
 
     <form method="POST" action="/profile">
         {{ csrf_field() }}
@@ -351,7 +332,7 @@ HTML 表单不支持 `PUT`、`PATCH` 或 `DELETE` 行为。所以当你要从 HT
 
     $action = Route::currentRouteAction();
 
-想知道所有可访问的方法，可以查看 API 文档，了解 [Route facade](http://laravel.com/api/{{version}}/Illuminate/Routing/Router.html) 和 [Route 实例](http://laravel.com/api/{{version}}/Illuminate/Routing/Route.html) 的基础类。
+想知道所有可访问的方法，可以查看 API 文档，了解 [Route facade](http://laravel.com/api/laravel/Illuminate/Routing/Router.html) 和 [Route 实例](http://laravel.com/api/laravel/Illuminate/Routing/Route.html) 的基础类。
 
 ## 译者署名
 | 用户名 | 头像 | 职能 | 签名 |

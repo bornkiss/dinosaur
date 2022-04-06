@@ -1,32 +1,4 @@
-# Laravel 的 Blade 模板引擎
-
-- [Laravel 的 Blade 模板引擎](#laravel-的-blade-模板引擎)
-  - [简介](#简介)
-  - [模板继承](#模板继承)
-    - [定义布局](#定义布局)
-    - [继承布局](#继承布局)
-  - [Components & Slots](#components--slots)
-      - [传递额外的数据给组件](#传递额外的数据给组件)
-  - [显示数据](#显示数据)
-      - [显示未转义的数据](#显示未转义的数据)
-      - [渲染 JSON](#渲染-json)
-    - [Blade & JavaScript 框架](#blade--javascript-框架)
-      - [`@verbatim` 指令](#verbatim-指令)
-  - [流程控制](#流程控制)
-    - [If 语句](#if-语句)
-      - [身份验证快捷方式](#身份验证快捷方式)
-    - [Switch 语句](#switch-语句)
-    - [循环](#循环)
-    - [循环变量](#循环变量)
-    - [注释](#注释)
-    - [PHP](#php)
-  - [引入子视图](#引入子视图)
-    - [为集合渲染视图](#为集合渲染视图)
-  - [堆栈](#堆栈)
-  - [服务注入](#服务注入)
-  - [拓展 Blade](#拓展-blade)
-    - [自定义 If 语句](#自定义-if-语句)
-  - [译者署名](#译者署名)
+#  Blade 模板引擎
 
 
 ## 简介
@@ -442,7 +414,7 @@ Blade 可以被推送到在其他视图或布局中的其他位置渲染的命�
 
 ## 服务注入
 
-`@inject` 命令可用于从 Larvel [服务容器](/docs/{{version}}/container) 中检索服务。传递给 `@inject` 的第一个参数为置放该服务的变量名称，而第二个参数是要解析的服务的类或是接口的名称：
+`@inject` 命令可用于从 Larvel [服务容器](/docs/laravel/container) 中检索服务。传递给 `@inject` 的第一个参数为置放该服务的变量名称，而第二个参数是要解析的服务的类或是接口的名称：
 
     @inject('metrics', 'App\Services\MetricsService')
 

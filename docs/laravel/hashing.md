@@ -1,12 +1,9 @@
-# Laravel 的哈希加密
-
-- [简介](#introduction)
-- [基本用法](#basic-usage)
+# 哈希加密
 
 
 ## 简介
 
-Laravel `Hash` [Facade](/docs/{{version}}/facades) 提供安全的 Bcrypt 哈希保存用户密码。 如果应用程序中使用了 Laravel 内置的 `LoginController` 和 `RegisterController` 类，它们将自动使用 Bcrypt 进行注册和身份验证。
+Laravel `Hash` [Facade](/docs/laravel/facades) 提供安全的 Bcrypt 哈希保存用户密码。 如果应用程序中使用了 Laravel 内置的 `LoginController` 和 `RegisterController` 类，它们将自动使用 Bcrypt 进行注册和身份验证。
 
 > {tip} Bcrypt 是哈希密码的理想选择，因为它的「加密系数」可以任意调整，这意味着生成哈希所需的时间可以随着硬件功率的增加而增加。
 
@@ -51,7 +48,7 @@ $hashed = Hash::make('password', [
 
 #### 根据哈希值验证密码
 
-`check` 方法可以验证给定的纯文本字符串对应于给定的散列。 如果使用 [Laravel 内置的](/docs/{{version}}/authentication) `LoginController`，则不需要直接使用该方法，因为该控制器会自动调用此方法：
+`check` 方法可以验证给定的纯文本字符串对应于给定的散列。 如果使用 [Laravel 内置的](/docs/laravel/authentication) `LoginController`，则不需要直接使用该方法，因为该控制器会自动调用此方法：
 
     if (Hash::check('plain-text', $hashedPassword)) {
         // 密码对比...

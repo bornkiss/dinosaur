@@ -1,21 +1,4 @@
-# Laravel 的文件系统和云存储功能集成
-
-- [简介](#introduction)
-- [配置](#configuration)
-    - [公共磁盘](#the-public-disk)
-    - [本地驱动](#the-local-driver)
-    - [驱动之前](#driver-prerequisites)
-- [获取磁盘实例](#obtaining-disk-instances)
-- [检索文件](#retrieving-files)
-    - [文件 URLs](#file-urls)
-    - [文件元数据](#file-metadata)
-- [保存文件](#storing-files)
-    - [文件上传](#file-uploads)
-    - [文件可见性](#file-visibility)
-- [删除文件](#deleting-files)
-- [目录](#directories)
-- [自定义文件系统](#custom-filesystems)
-
+# 文件系统和云存储功能集成
 
 ## 简介
 
@@ -333,7 +316,7 @@ Laravel 的文件系统集成提供一系列开箱即用的驱动支持；然而
 
     composer require spatie/flysystem-dropbox
 
-接下来，你需要创建一个[服务提供器](/docs/{{version}}/providers)，如 DropboxServiceProvider。并在该提供器的 `boot` 方法使用 `Storage` facade 的 `extend` 方法自定义你的驱动程序。
+接下来，你需要创建一个[服务提供器](/docs/laravel/providers)，如 DropboxServiceProvider。并在该提供器的 `boot` 方法使用 `Storage` facade 的 `extend` 方法自定义你的驱动程序。
 
     <?php
 

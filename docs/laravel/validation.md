@@ -1,28 +1,4 @@
-# Laravel 的表单验证机制详解
-
-- [简介](#introduction)
-- [快速验证](#validation-quickstart)
-    - [定义路由](#quick-defining-the-routes)
-    - [创建控制器](#quick-creating-the-controller)
-    - [编写验证逻辑](#quick-writing-the-validation-logic)
-    - [显示验证错误](#quick-displaying-the-validation-errors)
-    - [可选字段上的注意事项](#a-note-on-optional-fields)
-- [表单请求验证](#form-request-validation)
-    - [创建表单请求](#creating-form-requests)
-    - [授权表单请求](#authorizing-form-requests)
-    - [自定义错误消息](#customizing-the-error-messages)
-- [手动创建验证器](#manually-creating-validators)
-    - [自动重定向](#automatic-redirection)
-    - [命名错误包](#named-error-bags)
-    - [验证后钩子](#after-validation-hook)
-- [处理错误消息](#working-with-error-messages)
-    - [自定义错误消息](#custom-error-messages)
-- [可用的验证规则](#available-validation-rules)
-- [按条件增加规则](#conditionally-adding-rules)
-- [验证数组](#validating-arrays)
-- [自定义验证规则](#custom-validation-rules)
-    - [使用规则对象](#using-rule-objects)
-    - [使用扩展](#using-extensions)
+# 表单验证机制详解
 
 
 ## 简介
@@ -130,7 +106,7 @@ Laravel 提供了几种不同的方法来验证传入应用程序的数据。默
 
 ### 显示验证错误
 
-如果传入的请求参数未通过给定的验证规则呢？正如前面所提到的，Laravel 会自动把用户重定向到先前的位置。另外，所有的验证错误信息会被自动 [闪存至 session](/docs/{{version}}/session#flash-data)。
+如果传入的请求参数未通过给定的验证规则呢？正如前面所提到的，Laravel 会自动把用户重定向到先前的位置。另外，所有的验证错误信息会被自动 [闪存至 session](/docs/laravel/session#flash-data)。
 
 重申一次，我们不必在 `GET` 路由中将错误消息显式绑定到视图。因为 Lavarel 会检查在 Session 数据中的错误信息，并自动将其绑定到视图（如果存在）。而其中的变量 `$errors` 是 `Illuminate\Support\MessageBag` 的一个实例。要获取关于这个对象的更多信息，请 [查阅这个文档](#working-with-error-messages)。
 
@@ -288,7 +264,7 @@ Laravel 提供了几种不同的方法来验证传入应用程序的数据。默
 
 ## 手动创建验证器
 
-如果你不想要使用请求上使用 `validate` 方法，你可以通过 `validator` [Facade](/docs/{{version}}/facades) 手动创建一个验证器实例。用 Facade 上的 `make` 方法生成一个新的验证器实例：
+如果你不想要使用请求上使用 `validate` 方法，你可以通过 `validator` [Facade](/docs/laravel/facades) 手动创建一个验证器实例。用 Facade 上的 `make` 方法生成一个新的验证器实例：
 
     <?php
 
@@ -1066,7 +1042,7 @@ Laravel 提供了许多有用的验证规则，同时也支持自定义规则。
 
 ### 使用扩展
 
-另外一个注册自定义验证规则的方法，就是使用 `Validator` [Facade](/docs/{{version}}/facades) 中的 `extend` 方法。让我们在 [服务提供器](/docs/{{version}}/providers) 中使用这个方法来注册自定义验证规则：
+另外一个注册自定义验证规则的方法，就是使用 `Validator` [Facade](/docs/laravel/facades) 中的 `extend` 方法。让我们在 [服务提供器](/docs/laravel/providers) 中使用这个方法来注册自定义验证规则：
 
     <?php
 
@@ -1116,7 +1092,7 @@ Laravel 提供了许多有用的验证规则，同时也支持自定义规则。
 
     // 其余的验证错误消息...
 
-创建自定义验证规则时，可能需要为错误消息定义自定义替换占位符。你可以像上面所描述的那样通过 `Validator` Facade 来使用 `replacer` 方法创建一个自定义验证器。你可以在 [服务提供器](/docs/{{version}}/providers) 中的 `boot` 方法中执行此操作：
+创建自定义验证规则时，可能需要为错误消息定义自定义替换占位符。你可以像上面所描述的那样通过 `Validator` Facade 来使用 `replacer` 方法创建一个自定义验证器。你可以在 [服务提供器](/docs/laravel/providers) 中的 `boot` 方法中执行此操作：
 
     /**
      * 引导任何应用服务。

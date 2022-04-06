@@ -1,19 +1,4 @@
-# Laravel 的 HTTP 控制器
-
-- [简介](#introduction)
-- [基础控制器](#basic-controllers)
-    - [定义控制器](#defining-controllers)
-    - [控制器与命名空间](#controllers-and-namespaces)
-    - [单个行为控制器](#single-action-controllers)
-- [控制器中间件](#controller-middleware)
-- [资源控制器](#resource-controllers)
-    - [部分资源路由](#restful-partial-resource-routes)
-    - [命名资源路由](#restful-naming-resource-routes)
-    - [命名资源路由参数](#restful-naming-resource-route-parameters)
-    - [本地化资源 URI](#restful-localizing-resource-uris)
-    - [补充资源控制器](#restful-supplementing-resource-controllers)
-- [依赖注入 & 控制器](#dependency-injection-and-controllers)
-- [路由缓存](#route-caching)
+#  HTTP 控制器
 
 
 ## 简介
@@ -99,7 +84,7 @@
 
 ## 控制器中间件
 
-[中间件](/docs/{{version}}/middleware) 可以在路由文件中被分配给控制器路由：
+[中间件](/docs/laravel/middleware) 可以在路由文件中被分配给控制器路由：
 
     Route::get('profile', 'UserController@show')->middleware('auth');
 
@@ -261,7 +246,7 @@ Laravel 资源路由将典型的「CRUD」路由分配给具有单行代码的�
 
 #### 构造函数注入
 
-Laravel 使用 [服务容器](/docs/{{version}}/container) 来解析所有的控制器。因此，你可以在控制器的构造函数中使用类型提示需要的依赖项，而声明的依赖项会自动解析并注入控制器实例中：
+Laravel 使用 [服务容器](/docs/laravel/container) 来解析所有的控制器。因此，你可以在控制器的构造函数中使用类型提示需要的依赖项，而声明的依赖项会自动解析并注入控制器实例中：
 
     <?php
 
@@ -288,7 +273,7 @@ Laravel 使用 [服务容器](/docs/{{version}}/container) 来解析所有的控
         }
     }
 
-当然，你也可以类型提示 [Laravel 契约](/docs/{{version}}/contracts)，只要它能被解析。根据你的应用，将你的依赖项注入控制器能提供更好的可测试性。
+当然，你也可以类型提示 [Laravel 契约](/docs/laravel/contracts)，只要它能被解析。根据你的应用，将你的依赖项注入控制器能提供更好的可测试性。
 
 #### 方法注入
 

@@ -1,18 +1,8 @@
-# Laravel 的 Facades
-
-- [Laravel 的 Facades](#laravel-的-facades)
-  - [简介](#简介)
-  - [何时使用 Facades](#何时使用-facades)
-    - [Facades Vs. 依赖注入](#facades-vs-依赖注入)
-    - [Facades Vs. 辅助函数](#facades-vs-辅助函数)
-  - [Facades 工作原理](#facades-工作原理)
-  - [Facade 类参考](#facade-类参考)
-  - [译者署名](#译者署名)
-
+#  Facades
 
 ## 简介
 
-Facades（读音：/fəˈsäd/ ）为应用程序的 [服务容器](/docs/{{version}}/container) 中可用的类提供了一个「静态」接口。Laravel 自带了很多 Facades ，可以访问绝大部分 Laravel 的功能。Laravel Facades 实际上是服务容器中底层类的「静态代理」，它提供了简洁而富有表现力的语法，甚至比传统的静态方法更具可测试性和扩展性。
+Facades（读音：/fəˈsäd/ ）为应用程序的 [服务容器](/docs/laravel/container) 中可用的类提供了一个「静态」接口。Laravel 自带了很多 Facades ，可以访问绝大部分 Laravel 的功能。Laravel Facades 实际上是服务容器中底层类的「静态代理」，它提供了简洁而富有表现力的语法，甚至比传统的静态方法更具可测试性和扩展性。
 
 所有的 Laravel Facades 都在 `Illuminate\Support\Facades` 命名空间中定义。所以，我们可以轻松地使用 Facade :
 
@@ -31,7 +21,7 @@ Facades 有很多好处，它为我们使用 Laravel 的功能提供了简单、
 
 然而，在使用 Facades 时，有些地方还需要特别注意。使用 Facades 最主要的风险就是会引起类作用范围的膨胀。因为 Facades 使用起来非常简单而且不需要注入，就会使得我们在不经意间在单个类中使用许多 Facades，从而导致类变的越来越大。而使用依赖注入的时候，使用的类越多，构造方法就会越长，在视觉上就会引起注意，提醒你这个类有点庞大了。因此在使用 Facades 的时候，要特别注意控制好类的大小，让类的作用范围保持短小。
 
-> {tip} 在开发与 Laravel 进行交互的第三方扩展包时，建议最好选择注入 [Laravel 契约](/docs/{{version}}/contracts) ，而不是使用 Facades 的方式来使用类。因为扩展包是在 Laravel 本身之外构建，所以你无法使用 Laravel Facades 测试辅助函数。
+> {tip} 在开发与 Laravel 进行交互的第三方扩展包时，建议最好选择注入 [Laravel 契约](/docs/laravel/contracts) ，而不是使用 Facades 的方式来使用类。因为扩展包是在 Laravel 本身之外构建，所以你无法使用 Laravel Facades 测试辅助函数。
 
 
 ### Facades Vs. 依赖注入
@@ -143,52 +133,52 @@ Facades 有很多好处，它为我们使用 Laravel 的功能提供了简单、
         protected static function getFacadeAccessor() { return 'cache'; }
     }
 
-`Cache` Facade 继承了 `Facade` 的类库，并且定义了 `getFacadeAccessor()` 方法。这个方法的作用是返回服务容器绑定的名称。当用户调用 `Cache` Facade 中的任何静态方法时， Laravel 会从 [服务容器](/docs/{{version}}/container) 中解析 `cache` 绑定以及该对象运行所请求的方法（在这个例子中就是 `get` 方法）。
+`Cache` Facade 继承了 `Facade` 的类库，并且定义了 `getFacadeAccessor()` 方法。这个方法的作用是返回服务容器绑定的名称。当用户调用 `Cache` Facade 中的任何静态方法时， Laravel 会从 [服务容器](/docs/laravel/container) 中解析 `cache` 绑定以及该对象运行所请求的方法（在这个例子中就是 `get` 方法）。
 
 
 ## Facade 类参考
 
-在下面你可以找到每个 Facade 类及其对应的底层类。这是一个查找给定 Facade 类 API 文档的工具。[服务容器绑定](/docs/{{version}}/container) 的可用键值也包含在内。
+在下面你可以找到每个 Facade 类及其对应的底层类。这是一个查找给定 Facade 类 API 文档的工具。[服务容器绑定](/docs/laravel/container) 的可用键值也包含在内。
 
 | Facade | 类 | 服务容器绑定 |
 | ----- | ----- | ----- |
-| App                  | [Illuminate\Foundation\Application](https://laravel.com/api/{{version}}/Illuminate/Foundation/Application.html) | `app`            |
-| Artisan              | [Illuminate\Contracts\Console\Kernel](https://laravel.com/api/{{version}}/Illuminate/Contracts/Console/Kernel.html) | `artisan`        |
-| Auth                 | [Illuminate\Auth\AuthManager](https://laravel.com/api/{{version}}/Illuminate/Auth/AuthManager.html) | `auth`           |
-| Blade                | [Illuminate\View\Compilers\BladeCompiler](https://laravel.com/api/{{version}}/Illuminate/View/Compilers/BladeCompiler.html) | `blade.compiler` |
-| Bus                  | [Illuminate\Contracts\Bus\Dispatcher](https://laravel.com/api/{{version}}/Illuminate/Contracts/Bus/Dispatcher.html) | &nbsp;           |
-| Cache                | [Illuminate\Cache\Repository](https://laravel.com/api/{{version}}/Illuminate/Cache/Repository.html) | `cache`          |
-| Config               | [Illuminate\Config\Repository](https://laravel.com/api/{{version}}/Illuminate/Config/Repository.html) | `config`         |
-| Cookie               | [Illuminate\Cookie\CookieJar](https://laravel.com/api/{{version}}/Illuminate/Cookie/CookieJar.html) | `cookie`         |
-| Crypt                | [Illuminate\Encryption\Encrypter](https://laravel.com/api/{{version}}/Illuminate/Encryption/Encrypter.html) | `encrypter`      |
-| DB                   | [Illuminate\Database\DatabaseManager](https://laravel.com/api/{{version}}/Illuminate/Database/DatabaseManager.html) | `db`             |
-| DB (Instance)        | [Illuminate\Database\Connection](https://laravel.com/api/{{version}}/Illuminate/Database/Connection.html) | &nbsp;           |
-| Event                | [Illuminate\Events\Dispatcher](https://laravel.com/api/{{version}}/Illuminate/Events/Dispatcher.html) | `events`         |
-| File                 | [Illuminate\Filesystem\Filesystem](https://laravel.com/api/{{version}}/Illuminate/Filesystem/Filesystem.html) | `files`          |
-| Gate                 | [Illuminate\Contracts\Auth\Access\Gate](https://laravel.com/api/{{version}}/Illuminate/Contracts/Auth/Access/Gate.html) | &nbsp;           |
-| Hash                 | [Illuminate\Contracts\Hashing\Hasher](https://laravel.com/api/{{version}}/Illuminate/Contracts/Hashing/Hasher.html) | `hash`           |
-| Lang                 | [Illuminate\Translation\Translator](https://laravel.com/api/{{version}}/Illuminate/Translation/Translator.html) | `translator`     |
-| Log                  | [Illuminate\Log\Writer](https://laravel.com/api/{{version}}/Illuminate/Log/Writer.html) | `log`            |
-| Mail                 | [Illuminate\Mail\Mailer](https://laravel.com/api/{{version}}/Illuminate/Mail/Mailer.html) | `mailer`         |
-| Notification         | [Illuminate\Notifications\ChannelManager](https://laravel.com/api/{{version}}/Illuminate/Notifications/ChannelManager.html) | &nbsp;           |
-| Password             | [Illuminate\Auth\Passwords\PasswordBrokerManager](https://laravel.com/api/{{version}}/Illuminate/Auth/Passwords/PasswordBrokerManager.html) | `auth.password`  |
-| Queue                | [Illuminate\Queue\QueueManager](https://laravel.com/api/{{version}}/Illuminate/Queue/QueueManager.html) | `queue`          |
-| Queue (Instance)     | [Illuminate\Contracts\Queue\Queue](https://laravel.com/api/{{version}}/Illuminate/Contracts/Queue/Queue.html) | `queue`          |
-| Queue (Base Class)   | [Illuminate\Queue\Queue](https://laravel.com/api/{{version}}/Illuminate/Queue/Queue.html) | &nbsp;           |
-| Redirect             | [Illuminate\Routing\Redirector](https://laravel.com/api/{{version}}/Illuminate/Routing/Redirector.html) | `redirect`       |
-| Redis                | [Illuminate\Redis\Database](https://laravel.com/api/{{version}}/Illuminate/Redis/Database.html) | `redis`          |
-| Request              | [Illuminate\Http\Request](https://laravel.com/api/{{version}}/Illuminate/Http/Request.html) | `request`        |
-| Response             | [Illuminate\Contracts\Routing\ResponseFactory](https://laravel.com/api/{{version}}/Illuminate/Contracts/Routing/ResponseFactory.html) | &nbsp;           |
-| Route                | [Illuminate\Routing\Router](https://laravel.com/api/{{version}}/Illuminate/Routing/Router.html) | `router`         |
-| Schema               | [Illuminate\Database\Schema\Blueprint](https://laravel.com/api/{{version}}/Illuminate/Database/Schema/Blueprint.html) | &nbsp;           |
-| Session              | [Illuminate\Session\SessionManager](https://laravel.com/api/{{version}}/Illuminate/Session/SessionManager.html) | `session`        |
-| Session (Instance)   | [Illuminate\Session\Store](https://laravel.com/api/{{version}}/Illuminate/Session/Store.html) | &nbsp;           |
-| Storage              | [Illuminate\Contracts\Filesystem\Factory](https://laravel.com/api/{{version}}/Illuminate/Contracts/Filesystem/Factory.html) | `filesystem`     |
-| URL                  | [Illuminate\Routing\UrlGenerator](https://laravel.com/api/{{version}}/Illuminate/Routing/UrlGenerator.html) | `url`            |
-| Validator            | [Illuminate\Validation\Factory](https://laravel.com/api/{{version}}/Illuminate/Validation/Factory.html) | `validator`      |
-| Validator (Instance) | [Illuminate\Validation\Validator](https://laravel.com/api/{{version}}/Illuminate/Validation/Validator.html) | &nbsp;           |
-| View                 | [Illuminate\View\Factory](https://laravel.com/api/{{version}}/Illuminate/View/Factory.html) | `view`           |
-| View (Instance)      | [Illuminate\View\View](https://laravel.com/api/{{version}}/Illuminate/View/View.html) | &nbsp;           |
+| App                  | [Illuminate\Foundation\Application](https://laravel.com/api/laravel/Illuminate/Foundation/Application.html) | `app`            |
+| Artisan              | [Illuminate\Contracts\Console\Kernel](https://laravel.com/api/laravel/Illuminate/Contracts/Console/Kernel.html) | `artisan`        |
+| Auth                 | [Illuminate\Auth\AuthManager](https://laravel.com/api/laravel/Illuminate/Auth/AuthManager.html) | `auth`           |
+| Blade                | [Illuminate\View\Compilers\BladeCompiler](https://laravel.com/api/laravel/Illuminate/View/Compilers/BladeCompiler.html) | `blade.compiler` |
+| Bus                  | [Illuminate\Contracts\Bus\Dispatcher](https://laravel.com/api/laravel/Illuminate/Contracts/Bus/Dispatcher.html) | &nbsp;           |
+| Cache                | [Illuminate\Cache\Repository](https://laravel.com/api/laravel/Illuminate/Cache/Repository.html) | `cache`          |
+| Config               | [Illuminate\Config\Repository](https://laravel.com/api/laravel/Illuminate/Config/Repository.html) | `config`         |
+| Cookie               | [Illuminate\Cookie\CookieJar](https://laravel.com/api/laravel/Illuminate/Cookie/CookieJar.html) | `cookie`         |
+| Crypt                | [Illuminate\Encryption\Encrypter](https://laravel.com/api/laravel/Illuminate/Encryption/Encrypter.html) | `encrypter`      |
+| DB                   | [Illuminate\Database\DatabaseManager](https://laravel.com/api/laravel/Illuminate/Database/DatabaseManager.html) | `db`             |
+| DB (Instance)        | [Illuminate\Database\Connection](https://laravel.com/api/laravel/Illuminate/Database/Connection.html) | &nbsp;           |
+| Event                | [Illuminate\Events\Dispatcher](https://laravel.com/api/laravel/Illuminate/Events/Dispatcher.html) | `events`         |
+| File                 | [Illuminate\Filesystem\Filesystem](https://laravel.com/api/laravel/Illuminate/Filesystem/Filesystem.html) | `files`          |
+| Gate                 | [Illuminate\Contracts\Auth\Access\Gate](https://laravel.com/api/laravel/Illuminate/Contracts/Auth/Access/Gate.html) | &nbsp;           |
+| Hash                 | [Illuminate\Contracts\Hashing\Hasher](https://laravel.com/api/laravel/Illuminate/Contracts/Hashing/Hasher.html) | `hash`           |
+| Lang                 | [Illuminate\Translation\Translator](https://laravel.com/api/laravel/Illuminate/Translation/Translator.html) | `translator`     |
+| Log                  | [Illuminate\Log\Writer](https://laravel.com/api/laravel/Illuminate/Log/Writer.html) | `log`            |
+| Mail                 | [Illuminate\Mail\Mailer](https://laravel.com/api/laravel/Illuminate/Mail/Mailer.html) | `mailer`         |
+| Notification         | [Illuminate\Notifications\ChannelManager](https://laravel.com/api/laravel/Illuminate/Notifications/ChannelManager.html) | &nbsp;           |
+| Password             | [Illuminate\Auth\Passwords\PasswordBrokerManager](https://laravel.com/api/laravel/Illuminate/Auth/Passwords/PasswordBrokerManager.html) | `auth.password`  |
+| Queue                | [Illuminate\Queue\QueueManager](https://laravel.com/api/laravel/Illuminate/Queue/QueueManager.html) | `queue`          |
+| Queue (Instance)     | [Illuminate\Contracts\Queue\Queue](https://laravel.com/api/laravel/Illuminate/Contracts/Queue/Queue.html) | `queue`          |
+| Queue (Base Class)   | [Illuminate\Queue\Queue](https://laravel.com/api/laravel/Illuminate/Queue/Queue.html) | &nbsp;           |
+| Redirect             | [Illuminate\Routing\Redirector](https://laravel.com/api/laravel/Illuminate/Routing/Redirector.html) | `redirect`       |
+| Redis                | [Illuminate\Redis\Database](https://laravel.com/api/laravel/Illuminate/Redis/Database.html) | `redis`          |
+| Request              | [Illuminate\Http\Request](https://laravel.com/api/laravel/Illuminate/Http/Request.html) | `request`        |
+| Response             | [Illuminate\Contracts\Routing\ResponseFactory](https://laravel.com/api/laravel/Illuminate/Contracts/Routing/ResponseFactory.html) | &nbsp;           |
+| Route                | [Illuminate\Routing\Router](https://laravel.com/api/laravel/Illuminate/Routing/Router.html) | `router`         |
+| Schema               | [Illuminate\Database\Schema\Blueprint](https://laravel.com/api/laravel/Illuminate/Database/Schema/Blueprint.html) | &nbsp;           |
+| Session              | [Illuminate\Session\SessionManager](https://laravel.com/api/laravel/Illuminate/Session/SessionManager.html) | `session`        |
+| Session (Instance)   | [Illuminate\Session\Store](https://laravel.com/api/laravel/Illuminate/Session/Store.html) | &nbsp;           |
+| Storage              | [Illuminate\Contracts\Filesystem\Factory](https://laravel.com/api/laravel/Illuminate/Contracts/Filesystem/Factory.html) | `filesystem`     |
+| URL                  | [Illuminate\Routing\UrlGenerator](https://laravel.com/api/laravel/Illuminate/Routing/UrlGenerator.html) | `url`            |
+| Validator            | [Illuminate\Validation\Factory](https://laravel.com/api/laravel/Illuminate/Validation/Factory.html) | `validator`      |
+| Validator (Instance) | [Illuminate\Validation\Validator](https://laravel.com/api/laravel/Illuminate/Validation/Validator.html) | &nbsp;           |
+| View                 | [Illuminate\View\Factory](https://laravel.com/api/laravel/Illuminate/View/Factory.html) | `view`           |
+| View (Instance)      | [Illuminate\View\View](https://laravel.com/api/laravel/Illuminate/View/View.html) | &nbsp;           |
 
 ## 译者署名
 

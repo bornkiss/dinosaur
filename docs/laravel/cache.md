@@ -1,21 +1,4 @@
-# Laravel 的缓存系统
-
-- [配置信息](#configuration)
-    - [驱动的前提条件](#driver-prerequisites)
-- [缓存的使用](#cache-usage)
-    - [获取缓存实例](#obtaining-a-cache-instance)
-    - [从缓存中获取数据](#retrieving-items-from-the-cache)
-    - [在缓存中存储数据](#storing-items-in-the-cache)
-    - [删除缓存中的数据](#removing-items-from-the-cache)
-    - [辅助函数 Cache](#the-cache-helper)
-- [缓存标记](#cache-tags)
-    - [写入被标记的缓存数据](#storing-tagged-cache-items)
-    - [访问被标记的缓存数据](#accessing-tagged-cache-items)
-    - [移除被标记的缓存数据](#removing-tagged-cache-items)
-- [增加自定义缓存驱动](#adding-custom-cache-drivers)
-    - [写驱动](#writing-the-driver)
-    - [注册驱动](#registering-the-driver)
-- [事件](#events)
+# 缓存系统
 
 
 ## 配置信息
@@ -71,7 +54,7 @@ Schema::create('cache', function ($table) {
 
 在使用 Laravel 的 Redis 缓存之前，你需要通过 Composer 安装 `predis/predis` 扩展包 (~1.0) 或者使用 PECL 安装 PhpRedis PHP 拓展。
 
-如需了解更多配置 Redis 的信息，请参考 [Laravel Redis 文档](/docs/{{version}}/redis#configuration).
+如需了解更多配置 Redis 的信息，请参考 [Laravel Redis 文档](/docs/laravel/redis#configuration).
 
 
 ## 缓存的使用
@@ -79,7 +62,7 @@ Schema::create('cache', function ($table) {
 
 ### 获取缓存实例
 
-`Illuminate\Contracts\Cache\Factory` 和 `Illuminate\Contracts\Cache\Repository` [contracts](/docs/{{version}}/contracts) 提供了 Laravel 缓存服务的访问机制。 `Factory`  contract  为你的应用程序定义了访问所有缓存驱动的机制。 `Repository` contract 通常是由 `cache` 配置文件指定的默认缓存驱动实现的。
+`Illuminate\Contracts\Cache\Factory` 和 `Illuminate\Contracts\Cache\Repository` [contracts](/docs/laravel/contracts) 提供了 Laravel 缓存服务的访问机制。 `Factory`  contract  为你的应用程序定义了访问所有缓存驱动的机制。 `Repository` contract 通常是由 `cache` 配置文件指定的默认缓存驱动实现的。
 
 不过，你也可以使用 `Cache` facade，我们将在后续的文档中介绍。`Cache` facade 为 Laravel 缓存 contract 底层的实现提供了方便又简洁的方法：
 
@@ -239,7 +222,7 @@ Cache::flush();
 
 ### 辅助函数 Cache
 
-除了可以使用 `Cache` facade 或者 [cache contract](/docs/{{version}}/contracts)之外，你也可以使用全局帮助函数 `cache` 来获取和保存缓存数据。当 `cache`  只接收一个字符串参数的时候，它将会返回给定键对应的值：
+除了可以使用 `Cache` facade 或者 [cache contract](/docs/laravel/contracts)之外，你也可以使用全局帮助函数 `cache` 来获取和保存缓存数据。当 `cache`  只接收一个字符串参数的时候，它将会返回给定键对应的值：
 
 ````
 $value = cache('key');
@@ -253,7 +236,7 @@ cache(['key' => 'value'], $minutes);
 cache(['key' => 'value'], Carbon::now()->addSeconds(10));
 ````
 
-> {tip} 如果在测试中使用全局函数 `cache`，可以使用 `Cache::shouldReceive`  方法，就像正在 [测试 facade](/docs/{{version}}/mocking#mocking-facades) 一样。
+> {tip} 如果在测试中使用全局函数 `cache`，可以使用 `Cache::shouldReceive`  方法，就像正在 [测试 facade](/docs/laravel/mocking#mocking-facades) 一样。
 
 
 ## 缓存标记
@@ -303,7 +286,7 @@ Cache::tags('authors')->flush();
 
 ### 写驱动
 
-要创建自定义的缓存驱动程序，首先需要实现 `Illuminate\Contracts\Cache\Store` [contract](/docs/{{version}}/contracts) 。因此，MongoDB 的缓存实现看起来会像这样：
+要创建自定义的缓存驱动程序，首先需要实现 `Illuminate\Contracts\Cache\Store` [contract](/docs/laravel/contracts) 。因此，MongoDB 的缓存实现看起来会像这样：
 
 ````
 <?php
@@ -377,14 +360,14 @@ class CacheServiceProvider extends ServiceProvider
 }
 ````
 
-传递给 `extend` 方法的第一个参数是驱动程序的名称。这将与 `config/cache.php` 配置文件的 `driver` 选项相对应。第二个参数是应该返回 `Illuminate\Cache\Repository` 实例的闭包。这个闭包将传递一个 [服务容器](/docs/{{version}}/container) 的 `$app` 实例。
+传递给 `extend` 方法的第一个参数是驱动程序的名称。这将与 `config/cache.php` 配置文件的 `driver` 选项相对应。第二个参数是应该返回 `Illuminate\Cache\Repository` 实例的闭包。这个闭包将传递一个 [服务容器](/docs/laravel/container) 的 `$app` 实例。
 
 你的自定义的扩展注册后，需要将 `config/cache.php` 配置文件中的 `driver` 选项更新为你的扩展名。
 
 
 ## 事件
 
-你可以监听缓存触发的 [事件](/docs/{{version}}/events) 来对每个缓存的操作执行代码。为此，你应该要将这些事件监听器放在 `EventServiceProvider` 中:
+你可以监听缓存触发的 [事件](/docs/laravel/events) 来对每个缓存的操作执行代码。为此，你应该要将这些事件监听器放在 `EventServiceProvider` 中:
 
 ````
 /**

@@ -28,13 +28,13 @@ function HomepageHeader() {
             width="200"
             height="200"
           /> */}
-          <img
+          {/* <img
             alt="Docusaurus with Keytar"
             className="heroLogo"
             src={isDarkMode ? '/img/docusaurus_keytar.svg' : '/img/docusaurus.svg'}
             width="200"
             height="200"
-          />
+          /> */}
           <div className='user-info'>
             <h1 className="hero__title">{siteConfig.title}</h1>
             <p className="hero__subtitle">{siteConfig.tagline}</p>

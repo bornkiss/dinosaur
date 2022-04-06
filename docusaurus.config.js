@@ -44,11 +44,11 @@ const config = {
     ({
       navbar: {
         hideOnScroll: true,
-        title: 'Bornkiss',
+        // title: 'Bornkiss',
         logo: {
           alt: 'My Site Logo',
-          src: 'img/logo.svg',
-          srcDark: 'img/docusaurus_keytar.svg'
+          src: 'img/bornkiss/logo-light.png',
+          srcDark: 'img/bornkiss/logo-dark.png'
         },
         items: [
           {

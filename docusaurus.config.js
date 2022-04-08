@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Bornkiss',
-  tagline: 'Love And Pease', // Kissing JavaScript
+  tagline: 'Love & Pease', // Kissing JavaScript
   url: 'https://docs.bornkiss.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -54,10 +54,10 @@ const config = {
           {
             type: 'doc',
             docId: 'intro',
-            position: 'left',
+            position: 'right',
             label: 'Docs',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          {to: '/blog', label: 'Blog', position: 'right'},
           {
             href: 'https://github.com/bornkiss/dinosaur',
             // label: 'GitHub',
@@ -118,12 +118,12 @@ const config = {
       },
       algolia: {
         // The application ID provided by Algolia
-        appId: 'YOUR_APP_ID',
+        appId: '3KT7AR3BLL',
   
         // Public API key: it is safe to commit it
-        apiKey: 'YOUR_SEARCH_API_KEY',
+        apiKey: '25489dde5aac071dfd01dfff40dbbf4b',
   
-        indexName: 'YOUR_INDEX_NAME'
+        indexName: 'bornkiss'
       },
       colorMode: {
         defaultMode: 'light',

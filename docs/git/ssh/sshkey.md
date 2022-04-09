@@ -1,4 +1,5 @@
 ---
+title: SSH公钥
 sidebar_position: 1
 ---
 
@@ -9,7 +10,6 @@ import TabItem from '@theme/TabItem';
 import styles from '@site/src/css/markdown-features-tabs-styles.module.css';
 ```
 
-# SSH公钥
 
 ## 生成公钥
 你可以使用以下命令生成sshkey：

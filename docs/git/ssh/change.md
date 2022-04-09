@@ -1,4 +1,5 @@
 ---
+title: 账号切换
 sidebar_position: 2
 ---
 
@@ -9,7 +10,6 @@ import TabItem from '@theme/TabItem';
 import styles from '@site/src/css/markdown-features-tabs-styles.module.css';
 ```
 
-# 账号切换
 
 **分别介绍在MacOS和Windows的实现方法**
 
